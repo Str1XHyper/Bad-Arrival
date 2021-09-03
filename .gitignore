@@ -38,8 +38,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
-
-
-Bonkers/Logs/
-
-Bonkers/.vsconfig
