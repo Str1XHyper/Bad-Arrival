@@ -8,20 +8,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject PhysicalBulletImpact;
     [SerializeField] private GunObject heldGun;
 
-
-    private bool isFiring;
-    private bool lastFirestate;
     public int cooldown;
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 
     private void FixedUpdate()
     {
