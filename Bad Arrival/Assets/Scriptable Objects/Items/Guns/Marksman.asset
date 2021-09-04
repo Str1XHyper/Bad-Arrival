@@ -15,11 +15,11 @@ MonoBehaviour:
   itemType: 0
   Name: 
   Description: 
-  Damage: 0
-  RecoilStrength: 0
-  RoundsPerMinute: 0
-  HeadshotMultiplier: 0
-  MagazineCapacity: 0
-  FireType: 0
-  GunType: 0
+  Damage: 50
+  RecoilStrength: 20
+  RoundsPerMinute: 180
+  HeadshotMultiplier: 1.5
+  MagazineCapacity: 12
+  FireType: 1
+  GunType: 1
   GunModel: {fileID: 0}

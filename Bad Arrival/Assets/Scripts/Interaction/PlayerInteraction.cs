@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
 
-    [SerializeField] private GameObject testObject;
+    [SerializeField] private GameObject PhysicalBulletImpact;
     [SerializeField] private GunObject heldGun;
 
 
@@ -50,7 +50,8 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
-            testObject.transform.position = hit.point;
+            Instantiate(PhysicalBulletImpact, hit.point, transform.rotation);
+            Debug.Log(transform.forward);
         }
         cooldown = Mathf.RoundToInt(60f / heldGun.RoundsPerMinute / Time.fixedDeltaTime);
     }
