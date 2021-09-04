@@ -74,19 +74,19 @@ MonoBehaviour:
     m_Value: 0
   top:
     m_OverrideState: 1
-    m_Value: {r: 0.34910005, g: 0.2028302, b: 1, a: 1}
+    m_Value: {r: 0.16981131, g: 0.14177643, b: 0.16729535, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   middle:
     m_OverrideState: 1
-    m_Value: {r: 0.30984253, g: 0.20024922, b: 0.9433962, a: 1}
+    m_Value: {r: 0.09327163, g: 0.1509434, b: 0.101427235, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   bottom:
-    m_OverrideState: 0
-    m_Value: {r: 0, g: 0.27325583, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.4764151, g: 1, b: 0.68226904, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1

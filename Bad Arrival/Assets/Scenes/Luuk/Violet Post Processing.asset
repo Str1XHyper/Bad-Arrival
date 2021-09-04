@@ -94,7 +94,7 @@ MonoBehaviour:
     m_Value: 1
   colorMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   color:
     m_OverrideState: 1
     m_Value: {r: 0.3515327, g: 0.22696589, b: 1, a: 1}
@@ -103,7 +103,7 @@ MonoBehaviour:
     showEyeDropper: 1
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -132,14 +132,14 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 350
+    m_Value: 450
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.627451, g: 0.5137255, b: 1, a: 1}
+    m_Value: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.5882353, g: 0.4784314, b: 1, a: 1}
+    m_Value: {r: 0.047912277, g: 0.03804736, b: 0.084905684, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -227,12 +227,12 @@ MonoBehaviour:
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.375
     min: 0.01
     max: 1
   roundness:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.96
     min: 0
     max: 1
   rounded:
