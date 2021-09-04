@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 350
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -226,18 +226,18 @@ MonoBehaviour:
     min: 0
     max: 1
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 1
     min: 0.01
     max: 1
   roundness:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
     min: 0
     max: 1
   rounded:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   mask:
     m_OverrideState: 0
     m_Value: {fileID: 0}
