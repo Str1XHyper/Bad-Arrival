@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
     [SerializeField] private Transform order;
-    private Transform orderTemp;
-    private Transform returnOrder;
+    [SerializeField] private Transform orderTemp;
     [SerializeField] private GameObject player;
     private AiBehaviourState BehaviourState;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float aggroMoveSpeed;
+    [SerializeField] private float patrolMoveSpeed;
 
     private NavMeshAgent agent;
 
@@ -29,7 +29,7 @@ public class EnemyAi : MonoBehaviour
         BehaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
         agent.destination = order.position;
-        agent.speed = moveSpeed;
+        agent.speed = patrolMoveSpeed;
     }
 
     // Update is called once per frame
@@ -64,12 +64,12 @@ public class EnemyAi : MonoBehaviour
 
     private void Patrol()
     {
-        
+        OrderPeriodically();
     }
 
     private void Aggro()
     {
-        agent.destination = order.position;
+        OrderPeriodically();
     }
 
     private void Attack()
@@ -79,7 +79,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Return()
     {
-        
+        OrderPeriodically();
         Debug.Log("Returning");
     }
 
@@ -90,16 +90,29 @@ public class EnemyAi : MonoBehaviour
             orderTemp = order;
         }
         order = player.transform;
-        returnOrder = transform;
         Debug.Log("Start Aggro");
         BehaviourState = AiBehaviourState.Aggro;
+        agent.speed = aggroMoveSpeed;
     }
 
     public void StopAggro()
     {
-        order = returnOrder;
+        order = orderTemp;
         agent.destination = order.position;
         Debug.Log("Stop Aggro");
         BehaviourState = AiBehaviourState.Return;
+        agent.speed = patrolMoveSpeed;
+    }
+
+    private float timeBetweenOrders = 0.1f;
+    private float timeSincePreviousOrder;
+    private void OrderPeriodically()
+    {
+        timeSincePreviousOrder += Time.deltaTime;
+        if(timeSincePreviousOrder > timeBetweenOrders)
+        {
+            agent.destination = order.position;
+            timeSincePreviousOrder = 0;
+        }
     }
 }
