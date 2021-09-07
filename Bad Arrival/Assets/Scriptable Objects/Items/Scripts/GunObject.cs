@@ -19,17 +19,10 @@ public enum GunTypes
 [CreateAssetMenu(fileName = "New Gun", menuName = "Inventory System/Weapon/Gun")]
 public class GunObject : ItemObject
 {
-    public int Damage;
-    public int RecoilStrength;
-    public int RoundsPerMinute;
-    public float HeadshotMultiplier;
-    public int MagazineCapacity;
-    public FireTypes FireType;
-    public GunTypes GunType;
-    public GameObject GunModel;
-
     private void Awake()
     {
         itemType = ItemType.Gun;
     }
 }
+
+
