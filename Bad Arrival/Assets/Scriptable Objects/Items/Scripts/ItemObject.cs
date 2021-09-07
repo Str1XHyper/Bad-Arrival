@@ -15,19 +15,31 @@ public enum Modifiers
     Magazine_Capacity,
 }
 
+public enum Rarities
+{
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary
+}
+
 public class ItemObject : ScriptableObject
 {
     public ItemType itemType;
     public string Name;
     [TextArea(15, 20)]
     public string Description;
+    public Rarities Rarity;
 
     public Sprite uiDisplay;
     public bool stackable;
     public Item data = new Item();
-    public ItemBuff[] buffs;
 
     #region Gun Data
+    [Header("Gun buffs")]
+    [Tooltip("Buffs have to be in the order: Damage, Recoil, FireRate, Magazine")]
+    public ItemBuff[] buffs;
 
     [SerializeField] protected int BaseDamage;
     [SerializeField] protected int BaseRecoilStrength;

@@ -10,51 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5ab023b83a17254aab7e827b89b141a, type: 3}
-  m_Name: Common Physical AR
+  m_Name: Rare Physical AR
   m_EditorClassIdentifier: 
   itemType: 0
   Name: Physical AR
   Description: 
-  Rarity: 0
+  Rarity: 2
   uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
   stackable: 0
   data:
     Name: 
-    Id: 0
+    Id: 1
     buffs:
     - modifier: 0
       value: 0
-      min: 0
-      max: 0
+      min: 1
+      max: 5
     - modifier: 1
       value: 0
-      min: 0
-      max: 0
+      min: 1
+      max: 5
     - modifier: 2
       value: 0
-      min: 0
-      max: 0
+      min: 1
+      max: 5
     - modifier: 3
       value: 0
-      min: 0
-      max: 0
+      min: 1
+      max: 5
   buffs:
   - modifier: 0
     value: 0
-    min: 0
-    max: 0
+    min: 6
+    max: 10
   - modifier: 1
     value: 0
-    min: 0
-    max: 0
+    min: 6
+    max: 10
   - modifier: 2
     value: 0
-    min: 0
-    max: 0
+    min: 6
+    max: 10
   - modifier: 3
     value: 0
-    min: 0
-    max: 0
+    min: 6
+    max: 10
   BaseDamage: 50
   BaseRecoilStrength: 20
   BaseRoundsPerMinute: 450
