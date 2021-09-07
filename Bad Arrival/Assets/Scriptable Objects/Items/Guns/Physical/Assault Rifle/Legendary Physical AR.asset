@@ -15,30 +15,31 @@ MonoBehaviour:
   itemType: 0
   Name: 
   Description: 
-  Rarity: 3
-  uiDisplay: {fileID: 0}
+  Rarity: 4
+  uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
   stackable: 0
   data:
     Name: 
-    Id: -1
+    Rarity: 0
+    Id: 4
     buffs: []
   buffs:
   - modifier: 0
     value: 0
-    min: 11
-    max: 15
+    min: 16
+    max: 20
   - modifier: 1
     value: 0
-    min: 11
-    max: 15
+    min: 16
+    max: 20
   - modifier: 2
     value: 0
-    min: 11
-    max: 15
+    min: 16
+    max: 20
   - modifier: 3
     value: 0
-    min: 11
-    max: 15
+    min: 16
+    max: 20
   BaseDamage: 0
   BaseRecoilStrength: 0
   BaseRoundsPerMinute: 0

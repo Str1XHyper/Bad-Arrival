@@ -37,9 +37,6 @@ public class ItemObject : ScriptableObject
     public Item data = new Item();
 
     #region Gun Data
-    [Header("Gun buffs")]
-    [Tooltip("Buffs have to be in the order: Damage, Recoil, FireRate, Magazine")]
-    public ItemBuff[] buffs;
 
     [SerializeField] protected int BaseDamage;
     [SerializeField] protected int BaseRecoilStrength;
@@ -56,7 +53,7 @@ public class ItemObject : ScriptableObject
     }
 
     public int GetRPM(Item item)
-    {
+        {
         return Mathf.RoundToInt(BaseRoundsPerMinute * ((float)item.buffs[2].value / 100f + 1));
     }
 
@@ -88,7 +85,10 @@ public class ItemObject : ScriptableObject
 public class Item
 {
     public string Name;
+    public Rarities Rarity;
     public int Id = -1;
+
+    [Tooltip("Gun buffs have to be in order: Damage, Recoil, Fire Rate, Magazine")]
     public ItemBuff[] buffs;
     public Item()
     {
@@ -99,6 +99,7 @@ public class Item
     {
         Name = item.name;
         Id = item.data.Id;
+        Rarity = item.Rarity;
         buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {

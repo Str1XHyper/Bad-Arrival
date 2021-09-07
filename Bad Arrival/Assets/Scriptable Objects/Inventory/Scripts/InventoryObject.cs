@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
 using System.Runtime.Serialization;
+using UnityEngine.UI;
 
 public enum InterfaceType
 {
@@ -179,10 +180,41 @@ public class InventorySlot
     }
     public void UpdateSlot(Item _item, int _amount)
     {
+        Color CommonColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        Color UncommonColor = new Color(0.5f, 0.7f, 0.5f, 0.5f);
+        Color RareColor = new Color(0.5f, 0.6f, 0.7f, 0.5f);
+        Color EpicColor = new Color(0.6f, 0.5f, 0.7f, 0.5f);
+        Color LegendaryColor = new Color(0.7f, 0.6f, 0.5f, 0.5f);
+
         if (OnBeforeUpdate != null)
             OnBeforeUpdate.Invoke(this);
         item = _item;
         amount = _amount;
+        if(slotDisplay != null)
+        {
+            Debug.Log(item.Rarity);
+            Color bgColor;
+            switch (item.Rarity)
+            {
+                case Rarities.Common:
+                default:
+                    bgColor = CommonColor;
+                    break;
+                case Rarities.Uncommon:
+                    bgColor = UncommonColor;
+                    break;
+                case Rarities.Rare:
+                    bgColor = RareColor;
+                    break;
+                case Rarities.Epic:
+                    bgColor = EpicColor;
+                    break;
+                case Rarities.Legendary:
+                    bgColor = LegendaryColor;
+                    break;
+            }
+            slotDisplay.GetComponent<Image>().color = bgColor;
+        }
         if (OnAfterUpdate != null)
             OnAfterUpdate.Invoke(this);
     }

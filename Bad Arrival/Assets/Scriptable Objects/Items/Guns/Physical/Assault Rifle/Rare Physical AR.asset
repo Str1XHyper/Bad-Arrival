@@ -20,24 +20,25 @@ MonoBehaviour:
   stackable: 0
   data:
     Name: 
-    Id: 1
+    Rarity: 0
+    Id: 2
     buffs:
     - modifier: 0
       value: 0
-      min: 1
-      max: 5
+      min: 6
+      max: 10
     - modifier: 1
       value: 0
-      min: 1
-      max: 5
+      min: 6
+      max: 10
     - modifier: 2
       value: 0
-      min: 1
-      max: 5
+      min: 6
+      max: 10
     - modifier: 3
       value: 0
-      min: 1
-      max: 5
+      min: 6
+      max: 10
   buffs:
   - modifier: 0
     value: 0
