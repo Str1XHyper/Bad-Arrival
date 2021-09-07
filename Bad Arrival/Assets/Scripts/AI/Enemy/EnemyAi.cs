@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
     [SerializeField] private Transform order;
+    [SerializeField] private GameObject patrolGroup;
+    private int currentPatrolStage = 0;
     [SerializeField] private Transform orderTemp;
     [SerializeField] private GameObject player;
-    private AiBehaviourState BehaviourState;
+
+    [SerializeField] private AiBehaviourState BehaviourState;
     [SerializeField] private float aggroMoveSpeed;
     [SerializeField] private float patrolMoveSpeed;
 
@@ -28,7 +31,7 @@ public class EnemyAi : MonoBehaviour
     {
         BehaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = order.position;
+        //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
     }
 
@@ -59,12 +62,24 @@ public class EnemyAi : MonoBehaviour
 
     private void Idle()
     {
-        
+        if(patrolGroup != null)
+        {
+            BehaviourState = AiBehaviourState.Patrol;
+        }
     }
 
     private void Patrol()
     {
-        OrderPeriodically();
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            if(patrolGroup != null)
+            {
+                GoToNextPatrolOrder();
+            }
+            
+
+        }
+            
     }
 
     private void Aggro()
@@ -114,5 +129,23 @@ public class EnemyAi : MonoBehaviour
             agent.destination = order.position;
             timeSincePreviousOrder = 0;
         }
+    }
+
+    private void GoToNextPatrolOrder()
+    {
+        Transform[] patrolOrders = patrolGroup.GetComponent<PatrolGroup>().patrolOrders;
+
+        if ((currentPatrolStage + 1) < patrolOrders.Length)
+        {
+            currentPatrolStage++;
+        }
+        else
+        {
+            currentPatrolStage = 0;
+        }
+
+        order = patrolOrders[currentPatrolStage];
+
+        agent.destination = order.position;
     }
 }
