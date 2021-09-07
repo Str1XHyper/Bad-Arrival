@@ -19,121 +19,189 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
+        Name: Common Physical AR
+        Rarity: 0
+        Id: 0
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+    - AllowedItems: 
+      item:
+        Name: Uncommon Physical AR
+        Rarity: 1
+        Id: 1
+        buffs:
+        - modifier: 0
+          value: 3
+          min: 1
+          max: 5
+        - modifier: 1
+          value: 2
+          min: 1
+          max: 5
+        - modifier: 2
+          value: 4
+          min: 1
+          max: 5
+        - modifier: 3
+          value: 3
+          min: 1
+          max: 5
+      amount: 1
+    - AllowedItems: 
+      item:
+        Name: Rare Physical AR
+        Rarity: 2
+        Id: 2
+        buffs:
+        - modifier: 0
+          value: 8
+          min: 6
+          max: 10
+        - modifier: 1
+          value: 8
+          min: 6
+          max: 10
+        - modifier: 2
+          value: 7
+          min: 6
+          max: 10
+        - modifier: 3
+          value: 9
+          min: 6
+          max: 10
+      amount: 1
+    - AllowedItems: 
+      item:
+        Name: Epic Physical AR
+        Rarity: 3
+        Id: 3
+        buffs: []
+      amount: 1
+    - AllowedItems: 
+      item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 
       item:
         Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
+        Rarity: 0
         Id: -1
         buffs: []
       amount: 0
