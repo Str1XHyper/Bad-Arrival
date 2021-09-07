@@ -15,6 +15,10 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float aggroMoveSpeed;
     [SerializeField] private float patrolMoveSpeed;
 
+    [SerializeField] private float attackRange;
+    private float timeSincePreviousAttack;
+    [SerializeField] private float timeBetweenAttacks;
+
     private NavMeshAgent agent;
 
     public enum AiBehaviourState
@@ -76,8 +80,6 @@ public class EnemyAi : MonoBehaviour
             {
                 GoToNextPatrolOrder();
             }
-            
-
         }
             
     }
@@ -85,17 +87,35 @@ public class EnemyAi : MonoBehaviour
     private void Aggro()
     {
         OrderPeriodically();
+        if (CheckIfAttackRangeReached())
+        {
+            BehaviourState = AiBehaviourState.Attack;
+        }
     }
 
     private void Attack()
     {
+        //Keep rotating towards the Target (Player)
+        Vector3 direction = (order.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 9f);
 
+        AttackPeriodically();
     }
 
     private void Return()
     {
-        OrderPeriodically();
-        Debug.Log("Returning");
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            if (patrolGroup != null)
+            {
+                BehaviourState = AiBehaviourState.Patrol;
+            }
+            else
+            {
+                BehaviourState = AiBehaviourState.Idle;
+            }
+        }
     }
 
     public void StartAggro()
@@ -147,5 +167,25 @@ public class EnemyAi : MonoBehaviour
         order = patrolOrders[currentPatrolStage];
 
         agent.destination = order.position;
+    }
+
+    private bool CheckIfAttackRangeReached()
+    {
+        if (!agent.pathPending && agent.remainingDistance < attackRange)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void AttackPeriodically()
+    {
+        timeSincePreviousAttack += Time.deltaTime;
+        if (timeSincePreviousAttack > timeBetweenAttacks)
+        {
+            timeSincePreviousAttack = 0;
+            Debug.Log("Do the Attack");
+        }
     }
 }
