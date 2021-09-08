@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StartAggro
   - StopAggro
+  - Enemy
   layers:
   - Default
   - TransparentFX

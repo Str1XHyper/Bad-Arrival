@@ -9,15 +9,17 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private GameObject patrolGroup;
     private int currentPatrolStage = 0;
     [SerializeField] private Transform orderTemp;
-    [SerializeField] private GameObject player;
+    [SerializeField] public GameObject player;
 
     [SerializeField] private AiBehaviourState BehaviourState;
     [SerializeField] private float aggroMoveSpeed;
     [SerializeField] private float patrolMoveSpeed;
 
     [SerializeField] private float attackRange;
-    private float timeSincePreviousAttack;
+    private float timeSincePreviousAttack = 99999; //High amount on purpose
     [SerializeField] private float timeBetweenAttacks;
+
+    private AbilityHandler abilityHandler;
 
     private NavMeshAgent agent;
 
@@ -37,6 +39,7 @@ public class EnemyAi : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
+        abilityHandler = GetComponent<AbilityHandler>();
     }
 
     // Update is called once per frame
@@ -185,6 +188,7 @@ public class EnemyAi : MonoBehaviour
         if (timeSincePreviousAttack > timeBetweenAttacks)
         {
             timeSincePreviousAttack = 0;
+            abilityHandler.Attack();
             Debug.Log("Do the Attack");
         }
     }

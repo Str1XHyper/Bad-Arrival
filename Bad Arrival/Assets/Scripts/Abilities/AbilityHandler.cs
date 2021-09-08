@@ -5,18 +5,20 @@ using UnityEngine;
 public class AbilityHandler : MonoBehaviour
 {
     [SerializeField] private GameObject[] abilities;
+    private Transform player;
+    Quaternion newRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GetComponent<EnemyAi>().player.transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Attack()
     {
-        
+        newRotation = Quaternion.LookRotation((player.position - transform.position).normalized);
+        Debug.Log("It should be doing the thing");
+        Instantiate(abilities[0], transform.position, newRotation);
     }
-
 
 }
