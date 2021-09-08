@@ -28,6 +28,11 @@ public abstract class UserInterface : MonoBehaviour
         }
         CreateSlots();
         slotsOnInterface.UpdateSlotDisplay();
+        if (gameObject.CompareTag("EquipmentTab"))
+        {
+            UIManager.instance.UpdateActiveSlot1(inventory.GetSlots[0].item, inventory.GetSlots[0].ItemObject);
+            UIManager.instance.UpdateActiveSlot2(inventory.GetSlots[1].item, inventory.GetSlots[1].ItemObject);
+        }
         AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
