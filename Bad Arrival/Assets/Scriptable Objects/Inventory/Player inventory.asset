@@ -19,50 +19,18 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: Common Physical AR
+        Name: 
         Rarity: 0
-        Id: 0
-        buffs:
-        - modifier: 0
-          value: 0
-          min: 0
-          max: 0
-        - modifier: 1
-          value: 0
-          min: 0
-          max: 0
-        - modifier: 2
-          value: 0
-          min: 0
-          max: 0
-        - modifier: 3
-          value: 0
-          min: 0
-          max: 0
-      amount: 1
+        Id: -1
+        buffs: []
+      amount: 0
     - AllowedItems: 
       item:
-        Name: Uncommon Physical AR
-        Rarity: 1
-        Id: 1
-        buffs:
-        - modifier: 0
-          value: 3
-          min: 1
-          max: 5
-        - modifier: 1
-          value: 2
-          min: 1
-          max: 5
-        - modifier: 2
-          value: 4
-          min: 1
-          max: 5
-        - modifier: 3
-          value: 3
-          min: 1
-          max: 5
-      amount: 1
+        Name: 
+        Rarity: 0
+        Id: -1
+        buffs: []
+      amount: 0
     - AllowedItems: 
       item:
         Name: Rare Physical AR
@@ -70,11 +38,11 @@ MonoBehaviour:
         Id: 2
         buffs:
         - modifier: 0
-          value: 8
+          value: 6
           min: 6
           max: 10
         - modifier: 1
-          value: 8
+          value: 6
           min: 6
           max: 10
         - modifier: 2
@@ -82,7 +50,7 @@ MonoBehaviour:
           min: 6
           max: 10
         - modifier: 3
-          value: 9
+          value: 8
           min: 6
           max: 10
       amount: 1
@@ -91,15 +59,47 @@ MonoBehaviour:
         Name: Epic Physical AR
         Rarity: 3
         Id: 3
-        buffs: []
+        buffs:
+        - modifier: 0
+          value: 14
+          min: 11
+          max: 15
+        - modifier: 1
+          value: 12
+          min: 11
+          max: 15
+        - modifier: 2
+          value: 12
+          min: 11
+          max: 15
+        - modifier: 3
+          value: 12
+          min: 11
+          max: 15
       amount: 1
     - AllowedItems: 
       item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        buffs: []
-      amount: 0
+        Name: Legendary Physical AR
+        Rarity: 4
+        Id: 4
+        buffs:
+        - modifier: 0
+          value: 18
+          min: 16
+          max: 20
+        - modifier: 1
+          value: 18
+          min: 16
+          max: 20
+        - modifier: 2
+          value: 18
+          min: 16
+          max: 20
+        - modifier: 3
+          value: 16
+          min: 16
+          max: 20
+      amount: 1
     - AllowedItems: 
       item:
         Name: 

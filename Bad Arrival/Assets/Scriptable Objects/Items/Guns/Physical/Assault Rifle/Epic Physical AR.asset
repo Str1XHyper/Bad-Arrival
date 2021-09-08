@@ -22,29 +22,28 @@ MonoBehaviour:
     Name: 
     Rarity: 0
     Id: 3
-    buffs: []
-  buffs:
-  - modifier: 0
-    value: 0
-    min: 11
-    max: 15
-  - modifier: 1
-    value: 0
-    min: 11
-    max: 15
-  - modifier: 2
-    value: 0
-    min: 11
-    max: 15
-  - modifier: 3
-    value: 0
-    min: 11
-    max: 15
-  BaseDamage: 0
-  BaseRecoilStrength: 0
-  BaseRoundsPerMinute: 0
-  BaseMagazineCapacity: 0
+    buffs:
+    - modifier: 0
+      value: 0
+      min: 11
+      max: 15
+    - modifier: 1
+      value: 0
+      min: 11
+      max: 15
+    - modifier: 2
+      value: 0
+      min: 11
+      max: 15
+    - modifier: 3
+      value: 0
+      min: 11
+      max: 15
+  BaseDamage: 50
+  BaseRecoilStrength: 20
+  BaseRoundsPerMinute: 450
+  BaseMagazineCapacity: 30
   FireType: 0
-  GunType: 0
+  GunType: 1
   Model: {fileID: 0}
-  HeadshotMultiplier: 0
+  HeadshotMultiplier: 1.3

@@ -49,7 +49,7 @@ public class ItemObject : ScriptableObject
 
     public int GetRecoilStrength(Item item)
     {
-        return Mathf.RoundToInt(BaseRecoilStrength * ((float)item.buffs[1].value / 100f + 1));
+        return Mathf.RoundToInt(BaseRecoilStrength * (1 - (float)item.buffs[1].value / 100f));
     }
 
     public int GetRPM(Item item)

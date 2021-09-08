@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class GunInfo : MonoBehaviour
 {
-    [Header("Visuals")]
-    [SerializeField] private Sprite energyIcon;
-    [SerializeField] private Sprite physicalIcon;
-    [SerializeField] private Sprite UIMask;
-
     [Header("GunInfo")]
     [SerializeField] private TMP_Text gunName;
     [SerializeField] private TMP_Text fireMode;
@@ -49,7 +44,7 @@ public class GunInfo : MonoBehaviour
         gunName.text = item.Name;
         fireMode.text = $"{defaultFiremodeText} {itemObject.FireType}";
         rarity.text = item.Rarity.ToString();
-        gunType.sprite = itemObject.GunType == GunTypes.Energy ? energyIcon : physicalIcon;
+        gunType.sprite = itemObject.GunType == GunTypes.Energy ? UIManager.instance.energyIcon : UIManager.instance.physicalIcon;
 
         damageText.text = $"{defaultDamageText} {itemObject.GetDamage(item)}";
         recoilText.text = $"{defaultRecoilText} {itemObject.GetRecoilStrength(item)}";
@@ -68,7 +63,7 @@ public class GunInfo : MonoBehaviour
         gunName.text = string.Empty;
         fireMode.text = defaultFiremodeText;
         rarity.text = string.Empty;
-        gunType.sprite = UIMask;
+        gunType.sprite = UIManager.instance.UIMask;
 
         damageText.text = defaultDamageText;
         recoilText.text = defaultRecoilText;
