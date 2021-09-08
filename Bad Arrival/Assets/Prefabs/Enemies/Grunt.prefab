@@ -362,8 +362,8 @@ MonoBehaviour:
   BehaviourState: 0
   aggroMoveSpeed: 9
   patrolMoveSpeed: 6
-  attackRange: 9
-  timeBetweenAttacks: 1.5
+  attackRange: 20
+  timeBetweenAttacks: 0.5
 --- !u!114 &2093348159778272217
 MonoBehaviour:
   m_ObjectHideFlags: 0

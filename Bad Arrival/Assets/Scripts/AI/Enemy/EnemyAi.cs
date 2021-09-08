@@ -29,7 +29,8 @@ public class EnemyAi : MonoBehaviour
         Patrol,
         Aggro,
         Attack,
-        Return
+        Return,
+        Die
     }
 
     // Start is called before the first frame update
@@ -62,6 +63,9 @@ public class EnemyAi : MonoBehaviour
             case AiBehaviourState.Return:
                 Return();
                 break;
+            case AiBehaviourState.Die:
+                Die();
+                break;
             default:
                 break;
         }
@@ -92,6 +96,7 @@ public class EnemyAi : MonoBehaviour
         OrderPeriodically();
         if (CheckIfAttackRangeReached())
         {
+            agent.destination = transform.position;
             BehaviourState = AiBehaviourState.Attack;
         }
     }
@@ -119,6 +124,11 @@ public class EnemyAi : MonoBehaviour
                 BehaviourState = AiBehaviourState.Idle;
             }
         }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Do The Big Die");
     }
 
     public void StartAggro()
