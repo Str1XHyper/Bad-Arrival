@@ -215,7 +215,6 @@ public class InventorySlot
         amount = _amount;
         if (slotDisplay != null)
         {
-            Debug.Log(item.Rarity);
             Color bgColor;
             switch (item.Rarity)
             {
