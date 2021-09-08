@@ -29,7 +29,7 @@ public class InventoryObject : ScriptableObject
         if (EmptySlotCount <= 0)
             return false;
         InventorySlot slot = FindItemOnInventory(_item);
-        if(!database.ItemObjects[_item.Id].stackable || slot == null)
+        if (!database.ItemObjects[_item.Id].stackable || slot == null)
         {
             SetEmptySlot(_item, _amount);
             return true;
@@ -56,7 +56,7 @@ public class InventoryObject : ScriptableObject
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            if(GetSlots[i].item.Id == _item.Id)
+            if (GetSlots[i].item.Id == _item.Id)
             {
                 return GetSlots[i];
             }
@@ -79,14 +79,37 @@ public class InventoryObject : ScriptableObject
 
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
-        if(item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject))
+        if (item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject))
         {
-            InventorySlot temp = new InventorySlot( item2.item, item2.amount);
+            InventorySlot temp = new InventorySlot(item2.item, item2.amount);
             item2.UpdateSlot(item1.item, item1.amount);
             item1.UpdateSlot(temp.item, temp.amount);
         }
+        if (item1.parent.CompareTag("EquipmentTab"))
+        {
+            if (item1.parent.inventory.GetSlots[0] == item1)
+            {
+                UIManager.instance.UpdateActiveSlot1(item1.item, item1.ItemObject);
+            }
+            if (item1.parent.inventory.GetSlots[1] == item1)
+            {
+                UIManager.instance.UpdateActiveSlot2(item1.item, item1.ItemObject);
+            }
+        }
+        if (item2.parent.CompareTag("EquipmentTab"))
+        {
+            if (item2.parent.inventory.GetSlots[0] == item2)
+            {
+                UIManager.instance.UpdateActiveSlot1(item2.item, item2.ItemObject);
+            }
+            if (item2.parent.inventory.GetSlots[1] == item2)
+            {
+                UIManager.instance.UpdateActiveSlot2(item2.item, item2.ItemObject);
+            }
+        }
+
     }
-    
+
 
     [ContextMenu("Save")]
     public void Save()
@@ -162,7 +185,7 @@ public class InventorySlot
     {
         get
         {
-            if(item.Id >= 0)
+            if (item.Id >= 0)
             {
                 return parent.inventory.database.ItemObjects[item.Id];
             }
@@ -190,7 +213,7 @@ public class InventorySlot
             OnBeforeUpdate.Invoke(this);
         item = _item;
         amount = _amount;
-        if(slotDisplay != null)
+        if (slotDisplay != null)
         {
             Debug.Log(item.Rarity);
             Color bgColor;

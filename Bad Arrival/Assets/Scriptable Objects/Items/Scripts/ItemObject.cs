@@ -76,6 +76,16 @@ public class ItemObject : ScriptableObject
         return newItem;
     }
 
+    public GunStatsModel CreateStatsModel()
+    {
+        return new GunStatsModel()
+        {
+            BaseDamage = BaseDamage,
+            BaseMagazineCapacity = BaseMagazineCapacity,
+            BaseRecoilStrength = BaseRecoilStrength,
+            BaseRoundsPerMinute = BaseRoundsPerMinute
+        };
+    }
 }
     
 
@@ -139,4 +149,12 @@ public class ItemBuff : IModifier
     {
 
     }
+}
+
+public class GunStatsModel
+{
+    public int BaseDamage;
+    public int BaseRecoilStrength;
+    public int BaseRoundsPerMinute;
+    public int BaseMagazineCapacity;
 }
