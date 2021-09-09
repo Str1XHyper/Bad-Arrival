@@ -10,6 +10,7 @@ public class EnemyAi : MonoBehaviour
     private int currentPatrolStage = 0;
     [SerializeField] private Transform orderTemp;
     [SerializeField] public GameObject player;
+    [SerializeField] public GameObject audioManager;
 
     [SerializeField] private AiBehaviourState BehaviourState;
     [SerializeField] private float aggroMoveSpeed;
@@ -41,6 +42,7 @@ public class EnemyAi : MonoBehaviour
         //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
         abilityHandler = GetComponent<AbilityHandler>();
+        
     }
 
     // Update is called once per frame
@@ -199,6 +201,8 @@ public class EnemyAi : MonoBehaviour
         {
             timeSincePreviousAttack = 0;
             abilityHandler.Attack();
+            audioManager.GetComponent<EnemyAudioManager>().PlayShootAudio();
+
             Debug.Log("Do the Attack");
         }
     }

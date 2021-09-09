@@ -6,6 +6,7 @@ public class AbilityHandler : MonoBehaviour
 {
     [SerializeField] private GameObject[] abilities;
     private Transform player;
+    [SerializeField] private Transform projectileExit;
     Quaternion newRotation;
 
     // Start is called before the first frame update
@@ -16,9 +17,9 @@ public class AbilityHandler : MonoBehaviour
 
     public void Attack()
     {
-        newRotation = Quaternion.LookRotation((player.position - transform.position).normalized);
+        newRotation = Quaternion.LookRotation((player.position - projectileExit.position).normalized);
         Debug.Log("It should be doing the thing");
-        Instantiate(abilities[0], transform.position, newRotation);
+        Instantiate(abilities[0], projectileExit.position, newRotation);
     }
 
 }
