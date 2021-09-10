@@ -84,6 +84,16 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
+            //if (hit.collider.CompareTag("Enemy"))
+            //{
+            //    //Apply damage to enemy
+            //    UIManager.instance.ShowHitmarker();
+            //}
+            if (hit.collider.CompareTag("Debug"))
+            {
+                //Apply damage to enemy
+                UIManager.instance.ShowHitmarker();
+            }
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
         }
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
