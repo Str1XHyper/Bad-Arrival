@@ -12,7 +12,7 @@ public class AbilityHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<EnemyAi>().player.transform;
+        player = Player.instance.transform;
     }
 
     public void Attack()
