@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null || instance != this)
+        if (instance == null || instance != this)
         {
             instance = this;
         }
@@ -22,6 +23,13 @@ public class UIManager : MonoBehaviour
     public Sprite energyIcon;
     public Sprite physicalIcon;
     public Sprite UIMask;
+
+    [Header("Colors")]
+    public Color CommonColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+    public Color UncommonColor = new Color(0.5f, 0.7f, 0.5f, 0.5f);
+    public Color RareColor = new Color(0.5f, 0.6f, 0.7f, 0.5f);
+    public Color EpicColor = new Color(0.6f, 0.5f, 0.7f, 0.5f);
+    public Color LegendaryColor = new Color(0.7f, 0.6f, 0.5f, 0.5f);
 
     [Space]
     [SerializeField] private GameObject playerController;
@@ -61,35 +69,68 @@ public class UIManager : MonoBehaviour
 
     public void UpdateActiveSlot1(Item item, ItemObject itemObject)
     {
-        if(itemObject != null)
+        var slotInfo = ActiveSlot1.GetComponentInChildren<GunInfo>(); 
+        
+        if (itemObject != null)
         {
-            ActiveSlot1.GetComponentInChildren<GunInfo>().UpdateInfo(item, itemObject);
+            slotInfo.UpdateInfo(item, itemObject);
+            switch (itemObject.Rarity)
+            {
+                case Rarities.Common:
+                default:
+                    slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
+                    break;
+                case Rarities.Uncommon:
+                    slotInfo.gameObject.GetComponent<Image>().color = UncommonColor;
+                    break;
+                case Rarities.Rare:
+                    slotInfo.gameObject.GetComponent<Image>().color = RareColor;
+                    break;
+                case Rarities.Epic:
+                    slotInfo.gameObject.GetComponent<Image>().color = EpicColor;
+                    break;
+                case Rarities.Legendary:
+                    slotInfo.gameObject.GetComponent<Image>().color = LegendaryColor;
+                    break;
+            }
         }
         else
         {
-            ClearSlot1();
+            slotInfo.ClearInfo();
+            slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
         }
-    }
-
-    private void ClearSlot1()
-    {
-        ActiveSlot1.GetComponentInChildren<GunInfo>().ClearInfo();
     }
 
     public void UpdateActiveSlot2(Item item, ItemObject itemObject)
     {
+        var slotInfo = ActiveSlot2.GetComponentInChildren<GunInfo>();
         if (itemObject != null)
         {
-            ActiveSlot2.GetComponentInChildren<GunInfo>().UpdateInfo(item, itemObject);
+            slotInfo.UpdateInfo(item, itemObject); 
+            switch (itemObject.Rarity)
+            {
+                case Rarities.Common:
+                default:
+                    slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
+                    break;
+                case Rarities.Uncommon:
+                    slotInfo.gameObject.GetComponent<Image>().color = UncommonColor;
+                    break;
+                case Rarities.Rare:
+                    slotInfo.gameObject.GetComponent<Image>().color = RareColor;
+                    break;
+                case Rarities.Epic:
+                    slotInfo.gameObject.GetComponent<Image>().color = EpicColor;
+                    break;
+                case Rarities.Legendary:
+                    slotInfo.gameObject.GetComponent<Image>().color = LegendaryColor;
+                    break;
+            }
         }
         else
         {
-            ClearSlot2();
+            slotInfo.ClearInfo();
+            slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
         }
-    }
-
-    private void ClearSlot2()
-    {
-        ActiveSlot2.GetComponentInChildren<GunInfo>().ClearInfo();
     }
 }

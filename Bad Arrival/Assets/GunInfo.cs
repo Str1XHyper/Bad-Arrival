@@ -40,8 +40,7 @@ public class GunInfo : MonoBehaviour
 
     public void UpdateInfo(Item item, ItemObject itemObject)
     {
-        Debug.Log("Updated text of" + gameObject.name);
-        gunName.text = item.Name;
+        gunName.text = itemObject.Name;
         fireMode.text = $"{defaultFiremodeText} {itemObject.FireType}";
         rarity.text = item.Rarity.ToString();
         gunType.sprite = itemObject.GunType == GunTypes.Energy ? UIManager.instance.energyIcon : UIManager.instance.physicalIcon;

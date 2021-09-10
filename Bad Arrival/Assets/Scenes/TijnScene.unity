@@ -310,6 +310,11 @@ MonoBehaviour:
   energyIcon: {fileID: 21300000, guid: 89176ffd47e222248b2557c10c6f97aa, type: 3}
   physicalIcon: {fileID: 21300000, guid: 4bd13c03500fb8849b1a168f8d3ee0f2, type: 3}
   UIMask: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  CommonColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
+  UncommonColor: {r: 0.5, g: 0.7, b: 0.5, a: 0.5019608}
+  RareColor: {r: 0.5, g: 0.6, b: 0.7, a: 0.5019608}
+  EpicColor: {r: 0.6, g: 0.5, b: 0.7, a: 0.5019608}
+  LegendaryColor: {r: 0.7, g: 0.6, b: 0.5, a: 0.5019608}
   playerController: {fileID: 1542534341}
   inventoryHolder: {fileID: 1015607765}
   interactMessage: {fileID: 1661942323}
