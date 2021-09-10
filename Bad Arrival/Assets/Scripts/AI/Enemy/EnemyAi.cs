@@ -113,7 +113,7 @@ public class EnemyAi : MonoBehaviour
     {
         CheckIfPlayerIsInsideStartAggroRange();
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!agent.pathPending && agent.remainingDistance < 1.5f)
         {
             if(patrolGroup != null)
             {
@@ -149,7 +149,7 @@ public class EnemyAi : MonoBehaviour
     {
         CheckIfPlayerIsInsideStartAggroRange();
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!agent.pathPending && agent.remainingDistance < 1.5f)
         {
 
             if (patrolGroup != null)
