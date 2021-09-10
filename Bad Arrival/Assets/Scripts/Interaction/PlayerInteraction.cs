@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject physicalBulletImpact;
     private InventorySlot heldSlot;
     [SerializeField] private float interactRange;
+    public LayerMask IgnoredLayer;
 
     public int cooldown;
     private bool inventoryOpen = false;
@@ -82,16 +83,12 @@ public class PlayerInteraction : MonoBehaviour
     {
         Transform transform = Camera.main.transform;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ~IgnoredLayer, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.CompareTag("Enemy"))
             {
-                //Apply damage to enemy
+                hit.collider.GetComponent<Enemy>().ApplyDamage(heldGun.ItemObject.GetDamage(heldGun.item));
                 UIManager.instance.ShowHitmarker();
-            }
-            else
-            {
-                Debug.Log(hit.collider);
             }
 
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);

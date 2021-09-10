@@ -24,9 +24,13 @@ public class Enemy : MonoBehaviour
         gruntAi = this.gameObject.GetComponent<EnemyAi>();
     }
 
-    public void ReceiveDamage(int damageAmount)
+    public void ApplyDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
         gruntAi.StartAggro();
     }
 }
