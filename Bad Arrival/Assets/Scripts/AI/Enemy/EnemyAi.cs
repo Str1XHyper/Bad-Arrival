@@ -11,7 +11,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private GameObject patrolGroup;
     private int currentPatrolStage = 0;
     [SerializeField] private Transform orderTemp;
-    [SerializeField] public GameObject player;
+    private GameObject player;
     [SerializeField] public GameObject audioManager;
 
     [SerializeField] private AiBehaviourState BehaviourState;
@@ -44,6 +44,8 @@ public class EnemyAi : MonoBehaviour
         patrolMoveSpeed = enemyObject.patrolMoveSpeed;
         attackRange = enemyObject.attackRange;
         timeBetweenAttacks = enemyObject.timeBetweenAttacks;
+
+        player = Player.instance.gameObject;
 
         BehaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
