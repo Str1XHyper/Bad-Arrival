@@ -4831,7 +4831,7 @@ GameObject:
   m_Layer: 6
   m_Name: PlayerController
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4896,8 +4896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b621e4c1bfa732b4b83ef85c76bc91b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  gravity: -9.81
+  movementSpeed: 20
+  gravity: -50
   jumpHeight: 3
   groundCheck: {fileID: 8659970274256090367}
   groundMask:
