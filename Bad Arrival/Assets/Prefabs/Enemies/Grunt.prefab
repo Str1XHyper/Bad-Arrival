@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 63172700}
   - component: {fileID: 63172701}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 634799539}
   - component: {fileID: 634799540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998067134}
   - component: {fileID: 998067135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6475943438557245690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6475943438846669260}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6475943438888284266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Models
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6475943439031451050}
   - component: {fileID: 6475943439031451049}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 6475943439148215073}
   - component: {fileID: 6475943439148215074}
   - component: {fileID: 6475943439148215075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1667,7 @@ GameObject:
   - component: {fileID: 6475943439200064319}
   - component: {fileID: 6475943439200064304}
   - component: {fileID: 6475943439200064305}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2909,7 +2909,7 @@ GameObject:
   - component: {fileID: 6475943439635208320}
   - component: {fileID: 6475943439635208321}
   - component: {fileID: 661957087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grunt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2968,11 +2968,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 11400000, guid: a3cf7d4c8cedd2140b54113b1ed3efe7, type: 2}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 3059
   order: {fileID: 0}
   combatOrder: {fileID: 0}
   patrolGroup: {fileID: 0}
   audioManager: {fileID: 634799538}
-  BehaviourState: 0
+  behaviourState: 0
   aggroMoveSpeed: 0
   patrolMoveSpeed: 0
   startAggroRange: 40
@@ -3038,7 +3041,7 @@ GameObject:
   - component: {fileID: 6475943439803367585}
   - component: {fileID: 6475943439803367586}
   - component: {fileID: 6475943439803367587}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Torus (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4219,7 +4222,7 @@ GameObject:
   - component: {fileID: 6475943440289574539}
   - component: {fileID: 6475943440289574540}
   - component: {fileID: 6475943440289574541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
