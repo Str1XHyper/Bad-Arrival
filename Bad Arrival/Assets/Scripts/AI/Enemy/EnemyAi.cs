@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
+    public EnemyObject enemyObject;
+
     [SerializeField] private Transform order;
     [SerializeField] private GameObject patrolGroup;
     private int currentPatrolStage = 0;
@@ -31,18 +33,23 @@ public class EnemyAi : MonoBehaviour
         Aggro,
         Attack,
         Return,
-        Die
+        Die,
+        Dying
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        aggroMoveSpeed = enemyObject.aggroMoveSpeed;
+        patrolMoveSpeed = enemyObject.patrolMoveSpeed;
+        attackRange = enemyObject.attackRange;
+        timeBetweenAttacks = enemyObject.timeBetweenAttacks;
+
         BehaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
         //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
         abilityHandler = GetComponent<AbilityHandler>();
-        
     }
 
     // Update is called once per frame
@@ -67,6 +74,9 @@ public class EnemyAi : MonoBehaviour
                 break;
             case AiBehaviourState.Die:
                 Die();
+                break;
+            case AiBehaviourState.Dying:
+                Dying();
                 break;
             default:
                 break;
@@ -128,9 +138,14 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
+    private void Dying()
+    {
+        //Death Animation
+    }
+
     private void Die()
     {
-        Debug.Log("Do The Big Die");
+        Destroy(gameObject);
     }
 
     public void StartAggro()
@@ -140,7 +155,6 @@ public class EnemyAi : MonoBehaviour
             orderTemp = order;
         }
         order = player.transform;
-        Debug.Log("Start Aggro");
         BehaviourState = AiBehaviourState.Aggro;
         agent.speed = aggroMoveSpeed;
     }
@@ -149,7 +163,6 @@ public class EnemyAi : MonoBehaviour
     {
         order = orderTemp;
         agent.destination = order.position;
-        Debug.Log("Stop Aggro");
         BehaviourState = AiBehaviourState.Return;
         agent.speed = patrolMoveSpeed;
     }
@@ -202,8 +215,6 @@ public class EnemyAi : MonoBehaviour
             timeSincePreviousAttack = 0;
             abilityHandler.Attack();
             audioManager.GetComponent<EnemyAudioManager>().PlayShootAudio();
-
-            Debug.Log("Do the Attack");
         }
     }
 }

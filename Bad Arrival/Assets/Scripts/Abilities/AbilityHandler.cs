@@ -18,7 +18,6 @@ public class AbilityHandler : MonoBehaviour
     public void Attack()
     {
         newRotation = Quaternion.LookRotation((player.position - projectileExit.position).normalized);
-        Debug.Log("It should be doing the thing");
         Instantiate(abilities[0], projectileExit.position, newRotation);
     }
 

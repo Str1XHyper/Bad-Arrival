@@ -3208,16 +3208,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6e6f7fedcce574d9acfcf79f7f1edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyObject: {fileID: 11400000, guid: a3cf7d4c8cedd2140b54113b1ed3efe7, type: 2}
   order: {fileID: 0}
   patrolGroup: {fileID: 0}
   orderTemp: {fileID: 0}
   player: {fileID: 0}
   audioManager: {fileID: 634799538}
   BehaviourState: 0
-  aggroMoveSpeed: 9
-  patrolMoveSpeed: 6
-  attackRange: 20
-  timeBetweenAttacks: 0.33
+  aggroMoveSpeed: 0
+  patrolMoveSpeed: 0
+  attackRange: 0
+  timeBetweenAttacks: 0
 --- !u!114 &6475943439635208320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,9 +3231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a301f7279d81ed142b7dc0f37713c2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  mana: 0
-  shield: 0
+  enemyObject: {fileID: 11400000, guid: a3cf7d4c8cedd2140b54113b1ed3efe7, type: 2}
+  currentHealth: 0
+  maxHealth: 0
+  currentShield: 0
+  maxShield: 0
 --- !u!114 &6475943439635208321
 MonoBehaviour:
   m_ObjectHideFlags: 0
