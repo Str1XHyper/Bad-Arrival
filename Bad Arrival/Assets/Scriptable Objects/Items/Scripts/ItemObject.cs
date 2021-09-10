@@ -37,9 +37,6 @@ public class ItemObject : ScriptableObject
     public Item data = new Item();
 
     #region Gun Data
-    [Header("Gun buffs")]
-    [Tooltip("Buffs have to be in the order: Damage, Recoil, FireRate, Magazine")]
-    public ItemBuff[] buffs;
 
     [SerializeField] protected int BaseDamage;
     [SerializeField] protected int BaseRecoilStrength;
@@ -52,11 +49,11 @@ public class ItemObject : ScriptableObject
 
     public int GetRecoilStrength(Item item)
     {
-        return Mathf.RoundToInt(BaseRecoilStrength * ((float)item.buffs[1].value / 100f + 1));
+        return Mathf.RoundToInt(BaseRecoilStrength * (1 - (float)item.buffs[1].value / 100f));
     }
 
     public int GetRPM(Item item)
-    {
+        {
         return Mathf.RoundToInt(BaseRoundsPerMinute * ((float)item.buffs[2].value / 100f + 1));
     }
 
@@ -79,6 +76,16 @@ public class ItemObject : ScriptableObject
         return newItem;
     }
 
+    public GunStatsModel CreateStatsModel()
+    {
+        return new GunStatsModel()
+        {
+            BaseDamage = BaseDamage,
+            BaseMagazineCapacity = BaseMagazineCapacity,
+            BaseRecoilStrength = BaseRecoilStrength,
+            BaseRoundsPerMinute = BaseRoundsPerMinute
+        };
+    }
 }
     
 
@@ -88,7 +95,10 @@ public class ItemObject : ScriptableObject
 public class Item
 {
     public string Name;
+    public Rarities Rarity;
     public int Id = -1;
+
+    [Tooltip("Gun buffs have to be in order: Damage, Recoil, Fire Rate, Magazine")]
     public ItemBuff[] buffs;
     public Item()
     {
@@ -99,6 +109,7 @@ public class Item
     {
         Name = item.name;
         Id = item.data.Id;
+        Rarity = item.Rarity;
         buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {
@@ -138,4 +149,12 @@ public class ItemBuff : IModifier
     {
 
     }
+}
+
+public class GunStatsModel
+{
+    public int BaseDamage;
+    public int BaseRecoilStrength;
+    public int BaseRoundsPerMinute;
+    public int BaseMagazineCapacity;
 }

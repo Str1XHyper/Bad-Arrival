@@ -80,14 +80,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Shoot(InventorySlot heldGun)
     {
-        Debug.Log(heldGun.ItemObject.GetRPM(heldGun.item));
-
         Transform transform = Camera.main.transform;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
-            Debug.Log(transform.forward);
         }
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
     }

@@ -13,37 +13,37 @@ MonoBehaviour:
   m_Name: Legendary Physical AR
   m_EditorClassIdentifier: 
   itemType: 0
-  Name: 
+  Name: Assault Rifle
   Description: 
-  Rarity: 3
-  uiDisplay: {fileID: 0}
+  Rarity: 4
+  uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
   stackable: 0
   data:
     Name: 
-    Id: -1
-    buffs: []
-  buffs:
-  - modifier: 0
-    value: 0
-    min: 11
-    max: 15
-  - modifier: 1
-    value: 0
-    min: 11
-    max: 15
-  - modifier: 2
-    value: 0
-    min: 11
-    max: 15
-  - modifier: 3
-    value: 0
-    min: 11
-    max: 15
-  BaseDamage: 0
-  BaseRecoilStrength: 0
-  BaseRoundsPerMinute: 0
-  BaseMagazineCapacity: 0
+    Rarity: 0
+    Id: 4
+    buffs:
+    - modifier: 0
+      value: 0
+      min: 16
+      max: 20
+    - modifier: 1
+      value: 0
+      min: 16
+      max: 20
+    - modifier: 2
+      value: 0
+      min: 16
+      max: 20
+    - modifier: 3
+      value: 0
+      min: 16
+      max: 20
+  BaseDamage: 50
+  BaseRecoilStrength: 20
+  BaseRoundsPerMinute: 450
+  BaseMagazineCapacity: 30
   FireType: 0
-  GunType: 0
+  GunType: 1
   Model: {fileID: 0}
-  HeadshotMultiplier: 0
+  HeadshotMultiplier: 1.3

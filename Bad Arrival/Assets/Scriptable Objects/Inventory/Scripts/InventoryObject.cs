@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
 using System.Runtime.Serialization;
+using UnityEngine.UI;
 
 public enum InterfaceType
 {
@@ -28,7 +29,7 @@ public class InventoryObject : ScriptableObject
         if (EmptySlotCount <= 0)
             return false;
         InventorySlot slot = FindItemOnInventory(_item);
-        if(!database.ItemObjects[_item.Id].stackable || slot == null)
+        if (!database.ItemObjects[_item.Id].stackable || slot == null)
         {
             SetEmptySlot(_item, _amount);
             return true;
@@ -55,7 +56,7 @@ public class InventoryObject : ScriptableObject
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            if(GetSlots[i].item.Id == _item.Id)
+            if (GetSlots[i].item.Id == _item.Id)
             {
                 return GetSlots[i];
             }
@@ -78,14 +79,37 @@ public class InventoryObject : ScriptableObject
 
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
-        if(item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject))
+        if (item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject))
         {
-            InventorySlot temp = new InventorySlot( item2.item, item2.amount);
+            InventorySlot temp = new InventorySlot(item2.item, item2.amount);
             item2.UpdateSlot(item1.item, item1.amount);
             item1.UpdateSlot(temp.item, temp.amount);
         }
+        if (item1.parent.CompareTag("EquipmentTab"))
+        {
+            if (item1.parent.inventory.GetSlots[0] == item1)
+            {
+                UIManager.instance.UpdateActiveSlot1(item1.item, item1.ItemObject);
+            }
+            if (item1.parent.inventory.GetSlots[1] == item1)
+            {
+                UIManager.instance.UpdateActiveSlot2(item1.item, item1.ItemObject);
+            }
+        }
+        if (item2.parent.CompareTag("EquipmentTab"))
+        {
+            if (item2.parent.inventory.GetSlots[0] == item2)
+            {
+                UIManager.instance.UpdateActiveSlot1(item2.item, item2.ItemObject);
+            }
+            if (item2.parent.inventory.GetSlots[1] == item2)
+            {
+                UIManager.instance.UpdateActiveSlot2(item2.item, item2.ItemObject);
+            }
+        }
+
     }
-    
+
 
     [ContextMenu("Save")]
     public void Save()
@@ -161,7 +185,7 @@ public class InventorySlot
     {
         get
         {
-            if(item.Id >= 0)
+            if (item.Id >= 0)
             {
                 return parent.inventory.database.ItemObjects[item.Id];
             }
@@ -179,10 +203,40 @@ public class InventorySlot
     }
     public void UpdateSlot(Item _item, int _amount)
     {
+        Color CommonColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        Color UncommonColor = new Color(0.5f, 0.7f, 0.5f, 0.5f);
+        Color RareColor = new Color(0.5f, 0.6f, 0.7f, 0.5f);
+        Color EpicColor = new Color(0.6f, 0.5f, 0.7f, 0.5f);
+        Color LegendaryColor = new Color(0.7f, 0.6f, 0.5f, 0.5f);
+
         if (OnBeforeUpdate != null)
             OnBeforeUpdate.Invoke(this);
         item = _item;
         amount = _amount;
+        if (slotDisplay != null)
+        {
+            Color bgColor;
+            switch (item.Rarity)
+            {
+                case Rarities.Common:
+                default:
+                    bgColor = CommonColor;
+                    break;
+                case Rarities.Uncommon:
+                    bgColor = UncommonColor;
+                    break;
+                case Rarities.Rare:
+                    bgColor = RareColor;
+                    break;
+                case Rarities.Epic:
+                    bgColor = EpicColor;
+                    break;
+                case Rarities.Legendary:
+                    bgColor = LegendaryColor;
+                    break;
+            }
+            slotDisplay.GetComponent<Image>().color = bgColor;
+        }
         if (OnAfterUpdate != null)
             OnAfterUpdate.Invoke(this);
     }
