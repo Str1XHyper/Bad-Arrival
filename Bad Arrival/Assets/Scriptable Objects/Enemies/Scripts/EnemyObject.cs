@@ -10,6 +10,9 @@ public class EnemyObject : ScriptableObject
     public float attackRange;
     public float timeBetweenAttacks;
 
+    public float startAggroRange;
+    public float loseAggroRange;
+
     public float maxHealth;
     public float currentHealth;
     public float maxShield;

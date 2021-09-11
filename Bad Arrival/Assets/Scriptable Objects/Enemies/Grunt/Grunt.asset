@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroMoveSpeed: 9
   patrolMoveSpeed: 6
-  attackRange: 15
+  attackRange: 25
   timeBetweenAttacks: 0.33
+  startAggroRange: 35
+  loseAggroRange: 45
   maxHealth: 100
   currentHealth: 100
   maxShield: 100

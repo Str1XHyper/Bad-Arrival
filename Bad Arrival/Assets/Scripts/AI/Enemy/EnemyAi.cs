@@ -6,17 +6,22 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
     public EnemyObject enemyObject;
+    public LayerMask raycastLayers;
 
     [SerializeField] private Transform order;
+    [SerializeField] private Transform combatOrder;
     [SerializeField] private GameObject patrolGroup;
     private int currentPatrolStage = 0;
-    [SerializeField] private Transform orderTemp;
     private GameObject player;
     [SerializeField] public GameObject audioManager;
 
-    [SerializeField] private AiBehaviourState BehaviourState;
+    [SerializeField] private AiBehaviourState behaviourState;
     [SerializeField] private float aggroMoveSpeed;
     [SerializeField] private float patrolMoveSpeed;
+
+    [SerializeField] private float startAggroRange;
+    [SerializeField] private float loseAggroRange;
+    [SerializeField] private float distanceBetweenAiAndPlayer;
 
     [SerializeField] private float attackRange;
     private float timeSincePreviousAttack = 99999; //High amount on purpose
@@ -25,6 +30,12 @@ public class EnemyAi : MonoBehaviour
     private AbilityHandler abilityHandler;
 
     private NavMeshAgent agent;
+
+
+    private float timeSincePreviousOrder;
+    private float timeBetweenOrders = 0.05f;
+    private float timeSinceLastDistanceCheck;
+    private float timeBetweenDistanceChecks = 0.05f;
 
     public enum AiBehaviourState
     {
@@ -44,10 +55,12 @@ public class EnemyAi : MonoBehaviour
         patrolMoveSpeed = enemyObject.patrolMoveSpeed;
         attackRange = enemyObject.attackRange;
         timeBetweenAttacks = enemyObject.timeBetweenAttacks;
+        startAggroRange = enemyObject.startAggroRange;
+        loseAggroRange = enemyObject.loseAggroRange;
 
         player = Player.instance.gameObject;
 
-        BehaviourState = AiBehaviourState.Idle;
+        behaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
         //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
@@ -55,9 +68,9 @@ public class EnemyAi : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        switch (BehaviourState)
+        switch (behaviourState)
         {
             case AiBehaviourState.Idle:
                 Idle();
@@ -83,19 +96,25 @@ public class EnemyAi : MonoBehaviour
             default:
                 break;
         }
+
+        UpdateDistanceBetweenAiAndPlayer();
     }
 
     private void Idle()
     {
-        if(patrolGroup != null)
+        IfPlayerIsInsideStartAggroRange();
+
+        if (patrolGroup != null)
         {
-            BehaviourState = AiBehaviourState.Patrol;
+            behaviourState = AiBehaviourState.Patrol;
         }
     }
 
     private void Patrol()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        IfPlayerIsInsideStartAggroRange();
+
+        if (!agent.pathPending && agent.remainingDistance < 1.5f)
         {
             if(patrolGroup != null)
             {
@@ -107,35 +126,65 @@ public class EnemyAi : MonoBehaviour
 
     private void Aggro()
     {
+
+        IfPlayerIsOutsideLoseAggroRange();
         OrderPeriodically();
         if (CheckIfAttackRangeReached())
         {
             agent.destination = transform.position;
-            BehaviourState = AiBehaviourState.Attack;
+            behaviourState = AiBehaviourState.Attack;
         }
     }
 
     private void Attack()
     {
-        //Keep rotating towards the Target (Player)
-        Vector3 direction = (order.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 9f);
 
-        AttackPeriodically();
+        if (combatOrder != null)
+        {
+            if (IfVisionIsObstructed(transform.position, combatOrder.transform.position))
+            {
+                behaviourState = AiBehaviourState.Return;
+            }
+
+            //Keep rotating towards the Target (Player)
+            Vector3 direction = (combatOrder.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 9f);
+
+            AttackPeriodically();
+            
+        }
+
+        IfPlayerIsOutsideLoseAggroRange();
     }
 
     private void Return()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        IfPlayerIsInsideStartAggroRange();
+
+        if(agent.destination == null)
         {
-            if (patrolGroup != null)
+            if(patrolGroup == null)
             {
-                BehaviourState = AiBehaviourState.Patrol;
+                behaviourState = AiBehaviourState.Idle;
             }
             else
             {
-                BehaviourState = AiBehaviourState.Idle;
+                behaviourState = AiBehaviourState.Patrol;
+            }
+        }
+
+        if (!agent.pathPending && agent.remainingDistance < 1.5f)
+        {
+
+            if (patrolGroup != null)
+            {
+                
+                behaviourState = AiBehaviourState.Patrol;
+            }
+            else
+            {
+                behaviourState = AiBehaviourState.Idle;
             }
         }
     }
@@ -150,34 +199,94 @@ public class EnemyAi : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void IfPlayerIsInsideStartAggroRange()
+    {
+        if(distanceBetweenAiAndPlayer < startAggroRange)
+        {
+            if (!IfVisionIsObstructed(transform.position, player.transform.position))
+            {
+                StartAggro();
+            }
+        }
+    }
+
+    private void IfPlayerIsOutsideLoseAggroRange()
+    {
+        if (distanceBetweenAiAndPlayer > loseAggroRange)
+        {
+            StopAggro();
+        }
+    }
+
+    private bool IfVisionIsObstructed(Vector3 startPoint, Vector3 endPoint)
+    {
+        Vector3 direction = (endPoint - startPoint).normalized;
+        RaycastHit hit;
+
+        if (Physics.Raycast(startPoint, direction, out hit, loseAggroRange, raycastLayers))
+        {
+            Debug.DrawRay(startPoint, direction * hit.distance, Color.red);
+            if (hit.transform.CompareTag("Player"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void StartAggro()
     {
-        if( orderTemp == null)
-        {
-            orderTemp = order;
-        }
-        order = player.transform;
-        BehaviourState = AiBehaviourState.Aggro;
+        combatOrder = player.transform;
+        behaviourState = AiBehaviourState.Aggro;
         agent.speed = aggroMoveSpeed;
     }
 
     public void StopAggro()
     {
-        order = orderTemp;
-        agent.destination = order.position;
-        BehaviourState = AiBehaviourState.Return;
+        combatOrder = null;
+        if(agent.destination != null && order != null)
+        {
+            agent.destination = order.position;
+            behaviourState = AiBehaviourState.Return;
+        }
+        else
+        {
+            behaviourState = AiBehaviourState.Idle;
+        }
         agent.speed = patrolMoveSpeed;
     }
 
-    private float timeBetweenOrders = 0.1f;
-    private float timeSincePreviousOrder;
     private void OrderPeriodically()
     {
         timeSincePreviousOrder += Time.deltaTime;
         if(timeSincePreviousOrder > timeBetweenOrders)
         {
-            agent.destination = order.position;
+            if(combatOrder == null)
+            {
+                agent.destination = order.position;
+            }
+            else
+            {
+                agent.destination = combatOrder.position;
+            }
+            
             timeSincePreviousOrder = 0;
+        }
+    }
+
+    private void UpdateDistanceBetweenAiAndPlayer()
+    {
+        timeSinceLastDistanceCheck += Time.deltaTime;
+        if (timeSinceLastDistanceCheck > timeBetweenDistanceChecks)
+        {
+            distanceBetweenAiAndPlayer = Vector3.Distance(transform.position, player.transform.position);
         }
     }
 
