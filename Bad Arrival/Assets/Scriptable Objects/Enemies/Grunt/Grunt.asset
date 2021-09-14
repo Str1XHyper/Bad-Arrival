@@ -18,6 +18,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.33
   startAggroRange: 35
   loseAggroRange: 45
+  searchResetTime: 1
   maxHealth: 100
   currentHealth: 100
   maxShield: 100

@@ -63,6 +63,7 @@ public class EnemyAi : MonoBehaviour
         timeBetweenAttacks = enemyObject.timeBetweenAttacks;
         startAggroRange = enemyObject.startAggroRange;
         loseAggroRange = enemyObject.loseAggroRange;
+        searchResetTime = enemyObject.searchResetTime;
 
         player = Player.instance.gameObject;
 
