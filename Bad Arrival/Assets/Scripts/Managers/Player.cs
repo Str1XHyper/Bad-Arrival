@@ -60,4 +60,17 @@ public class Player : MonoBehaviour
         Debug.LogWarning("Player DIED!");
         //Play death animation
     }
+
+    public bool PickUpItem(ItemObject itemObject)
+    {
+        Item _item = new Item(itemObject);
+        if (inventory.AddItem(_item, 1))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
