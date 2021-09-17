@@ -57,6 +57,8 @@ public class EnemyAi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         aggroMoveSpeed = enemyObject.aggroMoveSpeed;
         patrolMoveSpeed = enemyObject.patrolMoveSpeed;
         attackRange = enemyObject.attackRange;
@@ -69,13 +71,17 @@ public class EnemyAi : MonoBehaviour
 
         behaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
-        //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
         abilityHandler = GetComponent<AbilityHandler>();
 
-        if(patrolGroup == null)
+        if (patrolGroup == null)
         {
             idlePosition = transform.position;
+        }
+        else
+        {
+            order = patrolGroup.GetComponent<PatrolGroup>().patrolOrders[0];
+            agent.destination = order.position;
         }
     }
 
