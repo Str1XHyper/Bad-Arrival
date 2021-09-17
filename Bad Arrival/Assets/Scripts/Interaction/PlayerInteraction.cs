@@ -41,20 +41,33 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange) && hit.collider.tag == "Interactable")
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange))
             {
-                UIManager.instance.CanInteract();
-                if (Input.GetKeyDown(KeyCode.F))
+                if (hit.collider.CompareTag("GroundItem"))
                 {
-                    if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
+                    UIManager.instance.CanInteract();
+                    if (Input.GetKeyDown(KeyCode.F))
                     {
-                        Destroy(hit.collider.gameObject);
+                        if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
+                    }
+                } else if (hit.collider.CompareTag("RandomLoot"))
+                {
+                    UIManager.instance.CanInteract();
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        if (Player.instance.PickUpItem(hit.collider.GetComponent<LootableChest>().lootpool.GenerateItem()))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
                     }
                 }
-            }
-            else
-            {
-                UIManager.instance.CanNotInteract();
+                else
+                {
+                    UIManager.instance.CanNotInteract();
+                }
             }
         }
 
