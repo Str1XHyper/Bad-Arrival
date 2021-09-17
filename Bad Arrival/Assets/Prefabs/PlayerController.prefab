@@ -4931,6 +4931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 150
+  currentHP: 50
   inventory: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   equipment: {fileID: 11400000, guid: f0cc2c57178bdc1409c13081f18cdfaa, type: 2}
 --- !u!54 &2275463719554556867
@@ -4958,7 +4959,7 @@ BoxCollider:
   m_GameObject: {fileID: 8659970273098720660}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.0687866, y: 3.737873, z: 1.2267685}
   m_Center: {x: -0.055618286, y: -0.004327774, z: -0.028812408}

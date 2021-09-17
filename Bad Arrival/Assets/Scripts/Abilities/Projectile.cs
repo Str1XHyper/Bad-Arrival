@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float destroyTime;
+    [SerializeField] private int damageAmount;
     private Rigidbody rb;
     private float elapsedTime;
 
@@ -32,12 +33,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //TODO
-            //Deal Damage
-        }
-        else if (!other.CompareTag("Enemy"))
-        {
-            //Destroy(gameObject);
+            other.GetComponent<Player>().ApplyDamage(damageAmount);
+            Destroy(gameObject);
         }
     }
 }
