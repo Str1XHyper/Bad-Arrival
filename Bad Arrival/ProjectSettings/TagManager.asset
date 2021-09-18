@@ -7,8 +7,9 @@ TagManager:
   - StartAggro
   - StopAggro
   - Enemy
-  - Interactable
   - EquipmentTab
+  - GroundItem
+  - RandomLoot
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Ground
   - PostProcessing
   - Not in Reflection
-  - 
-  - 
+  - Enemy
+  - Obstruct
   - 
   - 
   - 
