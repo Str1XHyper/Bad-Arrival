@@ -69,6 +69,10 @@ public class PlayerInteraction : MonoBehaviour
                     UIManager.instance.CanNotInteract();
                 }
             }
+            else
+            {
+                UIManager.instance.CanNotInteract();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
