@@ -153,19 +153,19 @@ public static class ExtensionMethods
                 {
                     case Rarities.Common:
                     default:
-                        bgColor = CommonColor;
+                        bgColor = UIManager.instance.CommonColor;
                         break;
                     case Rarities.Uncommon:
-                        bgColor = UncommonColor;
+                        bgColor = UIManager.instance.UncommonColor;
                         break;
                     case Rarities.Rare:
-                        bgColor = RareColor;
+                        bgColor = UIManager.instance.RareColor;
                         break;
                     case Rarities.Epic:
-                        bgColor = EpicColor;
+                        bgColor = UIManager.instance.EpicColor;
                         break;
                     case Rarities.Legendary:
-                        bgColor = LegendaryColor;
+                        bgColor = UIManager.instance.LegendaryColor;
                         break;
                 }
                 _slot.Key.GetComponent<Image>().color = bgColor;

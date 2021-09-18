@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Interactable
+  - StartAggro
+  - StopAggro
+  - Enemy
   - EquipmentTab
+  - GroundItem
+  - RandomLoot
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - Ground
   - PostProcessing
   - Not in Reflection
-  - 
-  - 
+  - Enemy
+  - Obstruct
   - 
   - 
   - 

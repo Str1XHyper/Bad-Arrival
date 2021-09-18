@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject physicalBulletImpact;
     private InventorySlot heldSlot;
     [SerializeField] private float interactRange;
+    public LayerMask IgnoredLayer;
 
     public int cooldown;
     private bool inventoryOpen = false;
@@ -40,20 +41,33 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange) && hit.collider.tag == "Interactable")
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange))
             {
-                UIManager.instance.CanInteract();
-                if (Input.GetKeyDown(KeyCode.F))
+                if (hit.collider.CompareTag("GroundItem"))
                 {
-                    if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
+                    UIManager.instance.CanInteract();
+                    if (Input.GetKeyDown(KeyCode.F))
                     {
-                        Destroy(hit.collider.gameObject);
+                        if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
+                    }
+                } else if (hit.collider.CompareTag("RandomLoot"))
+                {
+                    UIManager.instance.CanInteract();
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        if (Player.instance.PickUpItem(hit.collider.GetComponent<LootableChest>().lootpool.GenerateItem()))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
                     }
                 }
-            }
-            else
-            {
-                UIManager.instance.CanNotInteract();
+                else
+                {
+                    UIManager.instance.CanNotInteract();
+                }
             }
         }
 
@@ -82,8 +96,14 @@ public class PlayerInteraction : MonoBehaviour
     {
         Transform transform = Camera.main.transform;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ~IgnoredLayer, QueryTriggerInteraction.Ignore))
         {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<Enemy>().ApplyDamage(heldGun.ItemObject.GetDamage(heldGun.item));
+                UIManager.instance.ShowHitmarker();
+            }
+
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
         }
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
