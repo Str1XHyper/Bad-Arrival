@@ -180,6 +180,7 @@ public class InventorySlot
     public SlotUpdated OnBeforeUpdate;
     public Item item = new Item();
     public int amount;
+    public int ammoInMagazine;
 
     public ItemObject ItemObject
     {
@@ -213,6 +214,7 @@ public class InventorySlot
             OnBeforeUpdate.Invoke(this);
         item = _item;
         amount = _amount;
+
         if (slotDisplay != null)
         {
             Color bgColor;

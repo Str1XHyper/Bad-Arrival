@@ -22,6 +22,7 @@ MonoBehaviour:
     Name: 
     Rarity: 0
     Id: 1
+    ammoInMag: 0
     buffs:
     - modifier: 0
       value: 0
@@ -39,10 +40,15 @@ MonoBehaviour:
       value: 0
       min: 1
       max: 5
+    - modifier: 4
+      value: 0
+      min: 1
+      max: 5
   BaseDamage: 50
   BaseRecoilStrength: 20
   BaseRoundsPerMinute: 450
   BaseMagazineCapacity: 30
+  BaseReloadTime: 0
   FireType: 0
   GunType: 1
   Model: {fileID: 0}

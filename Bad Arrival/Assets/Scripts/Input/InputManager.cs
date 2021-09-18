@@ -29,25 +29,52 @@ public class InputManager : MonoBehaviour
 
     public Vector2 GetPlayerMovement()
     {
-        return playerControls.Player.Movement.ReadValue<Vector2>();
+        return playerControls.Movement.Movement.ReadValue<Vector2>();
     }
 
     public Vector2 GetMouseDelta()
     {
-        return playerControls.Player.Look.ReadValue<Vector2>();
+        return playerControls.Movement.Look.ReadValue<Vector2>();
     }
 
     public bool PlayerJumped()
     {
-        return playerControls.Player.Jump.triggered;
+        return playerControls.Movement.Jump.triggered;
+    }
+
+    public bool OpenedInventory()
+    {
+        return playerControls.Interaction.OpenInventory.triggered;
+    }
+
+    public bool PickedUpGroundItem()
+    {
+        return playerControls.Interaction.PickUpGroundItem.triggered;
+    }
+
+    public bool OpenedChest()
+    {
+        return playerControls.Interaction.OpenChest.triggered;
+    }
+    
+    public bool PlayerIsFiring()
+    {
+        return playerControls.Combat.Shoot.ReadValue<float>() > 0;
+    }
+
+    public bool PlayerReloaded()
+    {
+        return playerControls.Combat.Reload.triggered;
     }
 
     public void DisableControls()
     {
-        playerControls.Disable();
+        playerControls.Movement.Disable();
+        playerControls.Combat.Disable();
     }
     public void EnableControls()
     {
-        playerControls.Enable();
+        playerControls.Movement.Enable();
+        playerControls.Combat.Enable();
     }
 }

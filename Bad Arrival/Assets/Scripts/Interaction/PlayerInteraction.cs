@@ -12,9 +12,13 @@ public class PlayerInteraction : MonoBehaviour
 
     public int cooldown;
     private bool inventoryOpen = false;
+    private InputManager inputManager;
+    private bool isReloading = false;
+
     private void Start()
     {
         UIManager.instance.CloseInventory();
+        inputManager = InputManager.instance;
     }
 
     private void Update()
@@ -25,19 +29,31 @@ public class PlayerInteraction : MonoBehaviour
             if(Player.instance.GetHeldSlot().ItemObject != null)
             {
                 heldSlot = Player.instance.GetHeldSlot();
-                if (heldSlot.ItemObject.FireType == FireTypes.Full_Auto)
+                if(heldSlot.item.ammoInMag > 0)
                 {
-                    if (Input.GetKey(KeyCode.Mouse0) && cooldown <= 0)
+                    if (heldSlot.ItemObject.FireType == FireTypes.Full_Auto)
                     {
-                        Shoot(heldSlot);
+                        if (inputManager.PlayerIsFiring() && cooldown <= 0)
+                        {
+                            Shoot(heldSlot);
+                        }
+                    }
+                    else
+                    {
+                        if (inputManager.PlayerIsFiring() && cooldown <= 0)
+                        {
+                            Shoot(heldSlot);
+                        }
                     }
                 }
-                else
+                else if(!isReloading)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0) && cooldown <= 0)
-                    {
-                        Shoot(heldSlot);
-                    }
+                    StartCoroutine(Reload(heldSlot));
+                }
+
+                if (inputManager.PlayerReloaded() && !isReloading)
+                {
+                    StartCoroutine(Reload(heldSlot));
                 }
             }
 
@@ -46,7 +62,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (hit.collider.CompareTag("GroundItem"))
                 {
                     UIManager.instance.CanInteract();
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (inputManager.PickedUpGroundItem())
                     {
                         if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
                         {
@@ -56,7 +72,7 @@ public class PlayerInteraction : MonoBehaviour
                 } else if (hit.collider.CompareTag("RandomLoot"))
                 {
                     UIManager.instance.CanInteract();
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (inputManager.OpenedChest())
                     {
                         if (Player.instance.PickUpItem(hit.collider.GetComponent<LootableChest>().lootpool.GenerateItem()))
                         {
@@ -75,7 +91,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (inputManager.OpenedInventory())
         {
             if (inventoryOpen)
             {
@@ -88,7 +104,6 @@ public class PlayerInteraction : MonoBehaviour
                 inventoryOpen = !inventoryOpen;
             }
         }
-
     }
 
     private void FixedUpdate()
@@ -110,6 +125,16 @@ public class PlayerInteraction : MonoBehaviour
 
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
         }
+        heldGun.item.ammoInMag--;
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
+        
+    }
+
+    private IEnumerator Reload(InventorySlot heldGun)
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(heldGun.ItemObject.GetReloadTime(heldGun.item));
+        heldGun.item.ammoInMag = heldGun.ItemObject.GetMagCapacity(heldGun.item);
+        isReloading = false;
     }
 }

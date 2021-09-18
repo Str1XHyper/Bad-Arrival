@@ -13,6 +13,7 @@ public enum Modifiers
     Recoil,
     Fire_Rate,
     Magazine_Capacity,
+    Reload_Time
 }
 
 public enum Rarities
@@ -42,6 +43,7 @@ public class ItemObject : ScriptableObject
     [SerializeField] protected int BaseRecoilStrength;
     [SerializeField] protected int BaseRoundsPerMinute;
     [SerializeField] protected int BaseMagazineCapacity;
+    [SerializeField] protected float BaseReloadTime;
     public int GetDamage(Item item)
     {
         return Mathf.RoundToInt(BaseDamage * ((float)item.buffs[0].value / 100f + 1));
@@ -60,6 +62,11 @@ public class ItemObject : ScriptableObject
     public int GetMagCapacity(Item item)
     {
         return Mathf.RoundToInt(BaseMagazineCapacity * ((float)item.buffs[3].value / 100f + 1));
+    }
+
+    public float GetReloadTime(Item item)
+    {
+        return BaseReloadTime * (1 - item.buffs[4].value / 100f);
     }
 
 
@@ -97,8 +104,9 @@ public class Item
     public string Name;
     public Rarities Rarity;
     public int Id = -1;
+    public int ammoInMag = 0;
 
-    [Tooltip("Gun buffs have to be in order: Damage, Recoil, Fire Rate, Magazine")]
+    [Tooltip("Gun buffs have to be in order: Damage, Recoil, Fire Rate, Magazine, Reload Time")]
     public ItemBuff[] buffs;
     public Item()
     {
@@ -117,6 +125,10 @@ public class Item
             {
                 modifier = item.data.buffs[i].modifier
             };
+        }
+        if(item.itemType == ItemType.Gun)
+        {
+            ammoInMag = item.GetMagCapacity(this);
         }
     }
 }

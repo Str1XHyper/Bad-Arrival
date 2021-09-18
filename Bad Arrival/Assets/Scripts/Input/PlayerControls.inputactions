@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Player",
+            "name": "Movement",
             "id": "8745932e-9648-42c2-8fc5-77f94b35e6b4",
             "actions": [
                 {
@@ -105,6 +105,117 @@
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Interaction",
+            "id": "5b014c2f-d971-4ca3-93c3-ca4e122748f1",
+            "actions": [
+                {
+                    "name": "PickUpGroundItem",
+                    "type": "Button",
+                    "id": "d9b8f76c-eb1c-4ef8-a6ef-92e85f548f5e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OpenChest",
+                    "type": "Button",
+                    "id": "354b3984-655f-4084-bcb0-91d6d5dc11c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "454c7bb2-6ce7-4ec7-9def-00127ec23552",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5f4f9f55-bf0e-43ec-8923-a324ccd02a6d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PickUpGroundItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dabce1c-66c5-4be9-8144-752ae343432b",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenChest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b2e0270-a00c-42cc-be64-797840543f40",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Combat",
+            "id": "83e024be-65ef-4e8a-8e78-3c8e4a618056",
+            "actions": [
+                {
+                    "name": "Shoot",
+                    "type": "PassThrough",
+                    "id": "7f2396fc-8f9f-4676-8d5c-e925635421ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "67166ca8-4d91-4a33-ad21-6ce6d6fdc539",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e1d0489c-55ea-496d-9652-d283a44c9f19",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf122ead-e788-4f8d-b5ea-78d58adc3b56",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
