@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController charController;
@@ -12,33 +11,41 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 velocity;
 
-    [SerializeField] private Transform groundCheck;
-    private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
     private bool isGrounded;
+
+    private Transform cameraTransform;
+
+    private InputManager inputManager;
 
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        inputManager = InputManager.instance;
+        cameraTransform = Camera.main.transform;
     }
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = charController.isGrounded;
 
         if(isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = 0f;
         }
 
         float xMovement = Input.GetAxis("Horizontal");
         float zMovement = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * xMovement + transform.forward * zMovement;
-        
+        //Vector3 move = transform.right * xMovement + transform.forward * zMovement;
+        Vector2 movement = inputManager.GetPlayerMovement();
+        Vector3 move = new Vector3(movement.x, 0, movement.y);
+        move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+        move.y = 0f;
+
         charController.Move(move * movementSpeed * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (inputManager.PlayerJumped() && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }

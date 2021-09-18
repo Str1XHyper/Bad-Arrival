@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
-        mouseLook = playerController.GetComponent<MouseLook>();
     }
     #endregion
 
@@ -45,7 +44,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject interactMessage;
     [SerializeField] private GameObject ActiveSlot1;
     [SerializeField] private GameObject ActiveSlot2;
-    private MouseLook mouseLook;
 
 
     private void Start()
@@ -56,15 +54,15 @@ public class UIManager : MonoBehaviour
     public void OpenInventory()
     {
         Cursor.lockState = CursorLockMode.None;
-        mouseLook.SetLookState(false);
         inventoryHolder.SetActive(true);
+        InputManager.instance.DisableControls();
     }
 
     public void CloseInventory()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        mouseLook.SetLookState(true);
         inventoryHolder.SetActive(false);
+        InputManager.instance.EnableControls();
     }
 
     public void CanInteract()
