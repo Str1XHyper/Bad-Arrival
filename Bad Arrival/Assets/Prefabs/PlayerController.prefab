@@ -4785,7 +4785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8576732581311323080}
-  m_LocalRotation: {x: 0.15273543, y: -0.27706528, z: 0.04464772, w: 0.9475829}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.3000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4924,14 +4924,14 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 1
+    m_AccelTime: 0
+    m_DecelTime: 0
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -70
-    m_MaxValue: 70
+    m_MinValue: -90
+    m_MaxValue: 90
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -4948,9 +4948,9 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 1
+    m_AccelTime: 0
+    m_DecelTime: 0
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -4984,6 +4984,7 @@ GameObject:
   - component: {fileID: 8659970272918133311}
   - component: {fileID: 4756124289687680758}
   - component: {fileID: 8576732580352885427}
+  - component: {fileID: 1084579155}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5221,6 +5222,21 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1084579155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659970272918133440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
 --- !u!1 &8659970273098720660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,8 +5250,10 @@ GameObject:
   - component: {fileID: 8659970273098720656}
   - component: {fileID: 1542534346}
   - component: {fileID: 1542534347}
+  - component: {fileID: 2548935080180151245}
   - component: {fileID: 2275463719554556867}
   - component: {fileID: 2275463719554556868}
+  - component: {fileID: 1416214833}
   m_Layer: 6
   m_Name: PlayerController
   m_TagString: Player
@@ -5310,12 +5328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c7fb7f67f6f5647a3c50c0e85d60e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicalBulletImpact: {fileID: 2362520401651525121, guid: 621e122e19d4d184cbbed72834db4dd6, type: 3}
   interactRange: 10
-  IgnoredLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  cooldown: 0
 --- !u!114 &1542534347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5331,6 +5344,22 @@ MonoBehaviour:
   MaxHP: 150
   inventory: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   equipment: {fileID: 11400000, guid: f0cc2c57178bdc1409c13081f18cdfaa, type: 2}
+--- !u!114 &2548935080180151245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659970273098720660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c109b02e5aa1be44ea9f0ef6d1cd77b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicalBulletImpact: {fileID: 7686663360485140244, guid: 5fd8486192011b84184ade60908b47d9, type: 3}
+  IgnoredLayer:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!54 &2275463719554556867
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5360,6 +5389,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0687866, y: 3.737873, z: 1.2267685}
   m_Center: {x: -0.055618286, y: -0.004327774, z: -0.028812408}
+--- !u!114 &1416214833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659970273098720660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: -1
+    m_RawSignal: {fileID: 11400000, guid: 9bd24a61e93c309498475722c0113c5d, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
 --- !u!1 &8659970274222971312
 GameObject:
   m_ObjectHideFlags: 0
