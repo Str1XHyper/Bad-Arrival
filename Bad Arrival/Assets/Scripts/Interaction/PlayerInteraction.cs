@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
+    [SerializeField] private CinemachinePOVExtension lookManager;
+    private CinemachineImpulseSource cameraShake;
     [SerializeField] private GameObject physicalBulletImpact;
-    private InventorySlot heldSlot;
     [SerializeField] private float interactRange;
     public LayerMask IgnoredLayer;
 
+    private InventorySlot heldSlot;
     public int cooldown;
     private bool inventoryOpen = false;
     private InputManager inputManager;
     private bool isReloading = false;
+
+    private void Awake()
+    {
+        cameraShake = GetComponent<CinemachineImpulseSource>();
+    }
 
     private void Start()
     {
@@ -127,7 +134,13 @@ public class PlayerInteraction : MonoBehaviour
         }
         heldGun.item.ammoInMag--;
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
+
+        int recoilStrength = heldGun.ItemObject.GetRecoilStrength(heldGun.item);
+
+        Vector2 recoil = new Vector2(UnityEngine.Random.Range(0, recoilStrength/10) , UnityEngine.Random.Range(0, recoilStrength));
         
+        //lookManager.AddRecoil(recoil.normalized);
+        cameraShake.GenerateImpulse(Camera.main.transform.forward);
     }
 
     private IEnumerator Reload(InventorySlot heldGun)

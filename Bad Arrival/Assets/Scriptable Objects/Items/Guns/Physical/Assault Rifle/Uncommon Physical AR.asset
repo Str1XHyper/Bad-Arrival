@@ -48,7 +48,7 @@ MonoBehaviour:
   BaseRecoilStrength: 20
   BaseRoundsPerMinute: 450
   BaseMagazineCapacity: 30
-  BaseReloadTime: 0
+  BaseReloadTime: 1.2
   FireType: 0
   GunType: 1
   Model: {fileID: 0}

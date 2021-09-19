@@ -22,138 +22,238 @@ MonoBehaviour:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: Common Physical AR
+        Rarity: 0
+        Id: 0
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: Common Physical AR
+        Rarity: 0
+        Id: 0
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: Common Physical AR
+        Rarity: 0
+        Id: 0
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        buffs: []
-      amount: 0
+      ammoInMagazine: 0
