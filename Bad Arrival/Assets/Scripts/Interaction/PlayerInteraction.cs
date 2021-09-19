@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
-    [SerializeField] private GameObject physicalBulletImpact;
     private InventorySlot heldSlot;
-    [SerializeField] private float interactRange;
-    public LayerMask IgnoredLayer;
-
-    public int cooldown;
     private bool inventoryOpen = false;
     private InputManager inputManager;
-    private bool isReloading = false;
+    private GunManager gunMechanics;
+    [SerializeField] private float interactRange;
+
+    private void Awake()
+    {
+        gunMechanics = GetComponent<GunManager>();
+    }
 
     private void Start()
     {
@@ -33,27 +34,27 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     if (heldSlot.ItemObject.FireType == FireTypes.Full_Auto)
                     {
-                        if (inputManager.PlayerIsFiring() && cooldown <= 0)
+                        if (inputManager.PlayerIsFiring() && gunMechanics.cooldown <= 0)
                         {
-                            Shoot(heldSlot);
+                            gunMechanics.Shoot(heldSlot);
                         }
                     }
                     else
                     {
-                        if (inputManager.PlayerIsFiring() && cooldown <= 0)
+                        if (inputManager.PlayerIsFiring() && gunMechanics.cooldown <= 0)
                         {
-                            Shoot(heldSlot);
+                            gunMechanics.Shoot(heldSlot);
                         }
                     }
                 }
-                else if(!isReloading)
+                else if(!gunMechanics.isReloading)
                 {
-                    StartCoroutine(Reload(heldSlot));
+                    StartCoroutine(gunMechanics.Reload(heldSlot));
                 }
 
-                if (inputManager.PlayerReloaded() && !isReloading)
+                if (inputManager.PlayerReloaded() && !gunMechanics.isReloading)
                 {
-                    StartCoroutine(Reload(heldSlot));
+                    StartCoroutine(gunMechanics.Reload(heldSlot));
                 }
             }
 
@@ -104,37 +105,5 @@ public class PlayerInteraction : MonoBehaviour
                 inventoryOpen = !inventoryOpen;
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        cooldown--;
-    }
-
-    private void Shoot(InventorySlot heldGun)
-    {
-        Transform transform = Camera.main.transform;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ~IgnoredLayer, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                hit.collider.GetComponent<Enemy>().ApplyDamage(heldGun.ItemObject.GetDamage(heldGun.item));
-                UIManager.instance.ShowHitmarker();
-            }
-
-            Instantiate(physicalBulletImpact, hit.point, transform.rotation);
-        }
-        heldGun.item.ammoInMag--;
-        cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
-        
-    }
-
-    private IEnumerator Reload(InventorySlot heldGun)
-    {
-        isReloading = true;
-        yield return new WaitForSeconds(heldGun.ItemObject.GetReloadTime(heldGun.item));
-        heldGun.item.ammoInMag = heldGun.ItemObject.GetMagCapacity(heldGun.item);
-        isReloading = false;
     }
 }

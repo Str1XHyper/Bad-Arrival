@@ -40,7 +40,7 @@ public class ItemObject : ScriptableObject
     #region Gun Data
 
     [SerializeField] protected int BaseDamage;
-    [SerializeField] protected int BaseRecoilStrength;
+    [SerializeField] [Range(0,100)] protected int BaseRecoilStrength;
     [SerializeField] protected int BaseRoundsPerMinute;
     [SerializeField] protected int BaseMagazineCapacity;
     [SerializeField] protected float BaseReloadTime;

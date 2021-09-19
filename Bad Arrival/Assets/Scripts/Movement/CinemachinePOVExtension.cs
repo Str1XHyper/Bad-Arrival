@@ -35,4 +35,10 @@ public class CinemachinePOVExtension : CinemachineExtension
             }
         }
     }
+
+    public void AddRecoil(Vector2 recoil)
+    {
+        startingRotation.x += recoil.x;
+        startingRotation.y += recoil.y;
+    }
 }
