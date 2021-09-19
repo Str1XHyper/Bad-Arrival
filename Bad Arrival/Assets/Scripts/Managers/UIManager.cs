@@ -76,8 +76,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateActiveSlot1(Item item, ItemObject itemObject)
     {
-        var slotInfo = ActiveSlot1.GetComponentInChildren<GunInfo>(); 
-        
+        var slotInfo = ActiveSlot1.GetComponentInChildren<GunInfo>();
+
         if (itemObject != null)
         {
             slotInfo.UpdateInfo(item, itemObject);
@@ -106,6 +106,17 @@ public class UIManager : MonoBehaviour
             slotInfo.ClearInfo();
             slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
         }
+        if (Player.instance.equippedSlot == 0)
+        {
+            if (itemObject)
+            {
+                CrosshairManager.instance.SetCrosshair(itemObject.Crosshair);
+            }
+            else
+            {
+                CrosshairManager.instance.SetCrosshair(null);
+            }
+        }
     }
 
     public void UpdateActiveSlot2(Item item, ItemObject itemObject)
@@ -113,7 +124,7 @@ public class UIManager : MonoBehaviour
         var slotInfo = ActiveSlot2.GetComponentInChildren<GunInfo>();
         if (itemObject != null)
         {
-            slotInfo.UpdateInfo(item, itemObject); 
+            slotInfo.UpdateInfo(item, itemObject);
             switch (itemObject.Rarity)
             {
                 case Rarities.Common:
@@ -138,6 +149,18 @@ public class UIManager : MonoBehaviour
         {
             slotInfo.ClearInfo();
             slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
+        }
+
+        if (Player.instance.equippedSlot == 1)
+        {
+            if (itemObject)
+            {
+                CrosshairManager.instance.SetCrosshair(itemObject.Crosshair);
+            }
+            else
+            {
+                CrosshairManager.instance.SetCrosshair(null);
+            }
         }
     }
 

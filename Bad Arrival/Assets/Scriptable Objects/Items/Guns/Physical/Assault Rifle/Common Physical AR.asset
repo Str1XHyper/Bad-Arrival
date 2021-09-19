@@ -49,6 +49,7 @@ MonoBehaviour:
   BaseRoundsPerMinute: 450
   BaseMagazineCapacity: 30
   BaseReloadTime: 1.2
+  Crosshair: {fileID: 21300000, guid: 3725c49d2cc6cf643b49c9a595901325, type: 3}
   FireType: 0
   GunType: 1
   Model: {fileID: 0}

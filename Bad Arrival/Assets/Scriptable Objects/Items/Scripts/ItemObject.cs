@@ -44,6 +44,8 @@ public class ItemObject : ScriptableObject
     [SerializeField] protected int BaseRoundsPerMinute;
     [SerializeField] protected int BaseMagazineCapacity;
     [SerializeField] protected float BaseReloadTime;
+
+    public Texture2D Crosshair;
     public int GetDamage(Item item)
     {
         return Mathf.RoundToInt(BaseDamage * ((float)item.buffs[0].value / 100f + 1));

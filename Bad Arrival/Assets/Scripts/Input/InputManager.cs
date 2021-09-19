@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    #region Singleton
     public static InputManager instance;
-
-    private PlayerControls playerControls;
 
     private void Awake()
     {
@@ -15,6 +14,9 @@ public class InputManager : MonoBehaviour
 
         playerControls = new PlayerControls();
     }
+    #endregion
+
+    private PlayerControls playerControls;
 
 
     private void OnEnable()
@@ -76,5 +78,15 @@ public class InputManager : MonoBehaviour
     {
         playerControls.Movement.Enable();
         playerControls.Combat.Enable();
+    }
+
+    public bool EquippedSlot1()
+    {
+        return playerControls.Combat.Equipslot1.triggered;
+    }
+
+    public bool EquippedSlot2()
+    {
+        return playerControls.Combat.Equipslot2.triggered;
     }
 }

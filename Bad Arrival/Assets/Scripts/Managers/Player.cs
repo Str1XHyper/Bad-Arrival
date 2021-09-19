@@ -20,12 +20,19 @@ public class Player : MonoBehaviour
     public int MaxHP = 150;
     private int currentHP = 50;
 
+
+    public int equippedSlot { get; private set; } = 0;
+
     [SerializeField] private InventoryObject inventory;
     [SerializeField] private InventoryObject equipment;
 
     private void Start()
     {
         UIManager.instance.UpdateHealth(currentHP);
+        if(equipment.GetSlots[equippedSlot].ItemObject)
+            CrosshairManager.instance.SetCrosshair(equipment.GetSlots[equippedSlot].ItemObject.Crosshair);
+        else
+            CrosshairManager.instance.SetCrosshair(null);
     }
 
     public bool PickUpItem(GroundItem groundItem)
@@ -42,7 +49,7 @@ public class Player : MonoBehaviour
 
     public InventorySlot GetHeldSlot()
     {
-        return  equipment.GetSlots[0];
+        return equipment.GetSlots[equippedSlot];
     }
 
     public void ApplyDamage(int damage)
@@ -71,6 +78,19 @@ public class Player : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void SetActiveSlot(int slot)
+    {
+        equippedSlot = slot;
+        if (equipment.GetSlots[equippedSlot].ItemObject)
+        {
+            CrosshairManager.instance.SetCrosshair(equipment.GetSlots[equippedSlot].ItemObject.Crosshair);
+        }
+        else
+        {
+            CrosshairManager.instance.SetCrosshair(null);
         }
     }
 }
