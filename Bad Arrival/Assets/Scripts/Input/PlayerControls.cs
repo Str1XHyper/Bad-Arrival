@@ -207,6 +207,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Equip slot 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""903d3f56-4aa0-468c-9f7a-b22a44d5c232"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Equip slot 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""e39b689c-55bb-42e7-9c07-2da7a4d5a337"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -231,6 +247,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""375060b0-3d4f-47a3-99d1-7da66c2da514"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Equip slot 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f5cda5c-635f-407b-a641-39602ba018b1"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Equip slot 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +289,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Shoot = m_Combat.FindAction("Shoot", throwIfNotFound: true);
         m_Combat_Reload = m_Combat.FindAction("Reload", throwIfNotFound: true);
+        m_Combat_Equipslot1 = m_Combat.FindAction("Equip slot 1", throwIfNotFound: true);
+        m_Combat_Equipslot2 = m_Combat.FindAction("Equip slot 2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -400,12 +440,16 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private ICombatActions m_CombatActionsCallbackInterface;
     private readonly InputAction m_Combat_Shoot;
     private readonly InputAction m_Combat_Reload;
+    private readonly InputAction m_Combat_Equipslot1;
+    private readonly InputAction m_Combat_Equipslot2;
     public struct CombatActions
     {
         private @PlayerControls m_Wrapper;
         public CombatActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_Combat_Shoot;
         public InputAction @Reload => m_Wrapper.m_Combat_Reload;
+        public InputAction @Equipslot1 => m_Wrapper.m_Combat_Equipslot1;
+        public InputAction @Equipslot2 => m_Wrapper.m_Combat_Equipslot2;
         public InputActionMap Get() { return m_Wrapper.m_Combat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -421,6 +465,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Reload.started -= m_Wrapper.m_CombatActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_CombatActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_CombatActionsCallbackInterface.OnReload;
+                @Equipslot1.started -= m_Wrapper.m_CombatActionsCallbackInterface.OnEquipslot1;
+                @Equipslot1.performed -= m_Wrapper.m_CombatActionsCallbackInterface.OnEquipslot1;
+                @Equipslot1.canceled -= m_Wrapper.m_CombatActionsCallbackInterface.OnEquipslot1;
+                @Equipslot2.started -= m_Wrapper.m_CombatActionsCallbackInterface.OnEquipslot2;
+                @Equipslot2.performed -= m_Wrapper.m_CombatActionsCallbackInterface.OnEquipslot2;
+                @Equipslot2.canceled -= m_Wrapper.m_CombatActionsCallbackInterface.OnEquipslot2;
             }
             m_Wrapper.m_CombatActionsCallbackInterface = instance;
             if (instance != null)
@@ -431,6 +481,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @Equipslot1.started += instance.OnEquipslot1;
+                @Equipslot1.performed += instance.OnEquipslot1;
+                @Equipslot1.canceled += instance.OnEquipslot1;
+                @Equipslot2.started += instance.OnEquipslot2;
+                @Equipslot2.performed += instance.OnEquipslot2;
+                @Equipslot2.canceled += instance.OnEquipslot2;
             }
         }
     }
@@ -451,5 +507,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnShoot(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnEquipslot1(InputAction.CallbackContext context);
+        void OnEquipslot2(InputAction.CallbackContext context);
     }
 }

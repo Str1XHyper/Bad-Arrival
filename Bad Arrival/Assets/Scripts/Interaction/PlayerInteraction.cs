@@ -105,5 +105,13 @@ public class PlayerInteraction : MonoBehaviour
                 inventoryOpen = !inventoryOpen;
             }
         }
+
+        if (inputManager.EquippedSlot1())
+        {
+            Player.instance.SetActiveSlot(0);
+        } else if (inputManager.EquippedSlot2())
+        {
+            Player.instance.SetActiveSlot(1);
+        }
     }
 }

@@ -194,6 +194,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Equip slot 1",
+                    "type": "Button",
+                    "id": "903d3f56-4aa0-468c-9f7a-b22a44d5c232",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Equip slot 2",
+                    "type": "Button",
+                    "id": "e39b689c-55bb-42e7-9c07-2da7a4d5a337",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -216,6 +232,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "375060b0-3d4f-47a3-99d1-7da66c2da514",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip slot 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f5cda5c-635f-407b-a641-39602ba018b1",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip slot 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
