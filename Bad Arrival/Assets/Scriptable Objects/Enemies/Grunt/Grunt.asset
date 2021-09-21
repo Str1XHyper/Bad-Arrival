@@ -25,3 +25,4 @@ MonoBehaviour:
   currentShield: 100
   abilities:
   - {fileID: 3608382083142393213, guid: 65d2345a670c45147a0c44c38c222fc7, type: 3}
+  lootpool: {fileID: 11400000, guid: 8e6d5bda935d00c45a026f967546e1df, type: 2}

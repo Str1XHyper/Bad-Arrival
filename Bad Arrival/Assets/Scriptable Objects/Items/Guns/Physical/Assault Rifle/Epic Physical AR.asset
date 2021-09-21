@@ -52,5 +52,5 @@ MonoBehaviour:
   Crosshair: {fileID: 2800000, guid: 77927da068e876f45b1cb6acb70ac20d, type: 3}
   FireType: 0
   GunType: 1
-  Model: {fileID: 0}
+  Model: {fileID: 6180533261089076117, guid: c65dc46597e9dce4b8663e1fa1279357, type: 3}
   HeadshotMultiplier: 1.3

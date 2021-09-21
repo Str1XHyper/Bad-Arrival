@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72dad035735d9cb45b40c41564487c78, type: 3}
+  m_Name: bossLootpool
+  m_EditorClassIdentifier: 
+  lootpool:
+  - item: {fileID: 11400000, guid: 8f44b350a21f88148a9d1d70d44bb0be, type: 2}
+    weight: 15
+  - item: {fileID: 11400000, guid: 6a5e7315c4a371e4295e231660eb34b0, type: 2}
+    weight: 35
+  - item: {fileID: 11400000, guid: ccfa7f97fa0f6854780e3712be7f6bdb, type: 2}
+    weight: 50

@@ -29,6 +29,12 @@ public class Enemy : MonoBehaviour
         currentHealth -= damageAmount;
         if(currentHealth <= 0)
         {
+            var item = enemyObject.lootpool.GenerateItem();
+            if(item != null)
+            {
+                GameObject droppedItem = Instantiate(item.Model, transform.position, Quaternion.identity);
+                droppedItem.GetComponent<GroundItem>().item = item;
+            }
             Destroy(gameObject);
         }
         gruntAi.StartAggro();

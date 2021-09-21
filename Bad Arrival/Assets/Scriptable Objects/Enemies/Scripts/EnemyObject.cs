@@ -20,4 +20,6 @@ public class EnemyObject : ScriptableObject
     public float currentShield;
 
     public GameObject[] abilities;
+
+    public lootpoolObject lootpool;
 }
