@@ -2973,7 +2973,9 @@ MonoBehaviour:
     m_Bits: 3059
   order: {fileID: 0}
   combatOrder: {fileID: 0}
+  playerLastKnownPosition: {fileID: 0}
   patrolGroup: {fileID: 0}
+  idlePosition: {x: 0, y: 0, z: 0}
   audioManager: {fileID: 634799538}
   behaviourState: 0
   aggroMoveSpeed: 0
@@ -2983,6 +2985,7 @@ MonoBehaviour:
   distanceBetweenAiAndPlayer: 0
   attackRange: 0
   timeBetweenAttacks: 0
+  searchResetTime: 0
 --- !u!114 &6475943439635208320
 MonoBehaviour:
   m_ObjectHideFlags: 0

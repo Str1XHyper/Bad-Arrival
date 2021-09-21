@@ -10,7 +10,9 @@ public class EnemyAi : MonoBehaviour
 
     [SerializeField] private Transform order;
     [SerializeField] private Transform combatOrder;
+    [SerializeField] private Transform playerLastKnownPosition;
     [SerializeField] private GameObject patrolGroup;
+    [SerializeField] private Vector3 idlePosition;
     private int currentPatrolStage = 0;
     private GameObject player;
     [SerializeField] public GameObject audioManager;
@@ -26,6 +28,9 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float attackRange;
     private float timeSincePreviousAttack = 99999; //High amount on purpose
     [SerializeField] private float timeBetweenAttacks;
+
+    [SerializeField] private float searchResetTime;
+    private float searchTimeElapsed;
 
     private AbilityHandler abilityHandler;
 
@@ -45,26 +50,39 @@ public class EnemyAi : MonoBehaviour
         Attack,
         Return,
         Die,
-        Dying
+        Dying,
+        Searching
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
+
         aggroMoveSpeed = enemyObject.aggroMoveSpeed;
         patrolMoveSpeed = enemyObject.patrolMoveSpeed;
         attackRange = enemyObject.attackRange;
         timeBetweenAttacks = enemyObject.timeBetweenAttacks;
         startAggroRange = enemyObject.startAggroRange;
         loseAggroRange = enemyObject.loseAggroRange;
+        searchResetTime = enemyObject.searchResetTime;
 
         player = Player.instance.gameObject;
 
         behaviourState = AiBehaviourState.Idle;
         agent = GetComponent<NavMeshAgent>();
-        //agent.destination = order.position;
         agent.speed = patrolMoveSpeed;
         abilityHandler = GetComponent<AbilityHandler>();
+
+        if (patrolGroup == null)
+        {
+            idlePosition = transform.position;
+        }
+        else
+        {
+            order = patrolGroup.GetComponent<PatrolGroup>().patrolOrders[0];
+            agent.destination = order.position;
+        }
     }
 
     // Update is called once per frame
@@ -93,6 +111,9 @@ public class EnemyAi : MonoBehaviour
             case AiBehaviourState.Dying:
                 Dying();
                 break;
+            case AiBehaviourState.Searching:
+                Searching();
+                break;
             default:
                 break;
         }
@@ -108,6 +129,8 @@ public class EnemyAi : MonoBehaviour
         {
             behaviourState = AiBehaviourState.Patrol;
         }
+
+        agent.destination = idlePosition; //Shouldn't run every update
     }
 
     private void Patrol()
@@ -143,7 +166,7 @@ public class EnemyAi : MonoBehaviour
         {
             if (IfVisionIsObstructed(transform.position, combatOrder.transform.position))
             {
-                behaviourState = AiBehaviourState.Return;
+                StartSearching();
             }
 
             //Keep rotating towards the Target (Player)
@@ -197,6 +220,25 @@ public class EnemyAi : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void Searching()
+    {
+        searchTimeElapsed += Time.deltaTime;
+
+        if(searchTimeElapsed > searchResetTime)
+        {
+            playerLastKnownPosition = null;
+            behaviourState = AiBehaviourState.Return;
+        }
+    }
+
+    private void StartSearching()
+    {
+        searchTimeElapsed = 0;
+        playerLastKnownPosition = player.transform;
+        agent.destination = playerLastKnownPosition.position;
+        behaviourState = AiBehaviourState.Searching;
     }
 
     private void IfPlayerIsInsideStartAggroRange()

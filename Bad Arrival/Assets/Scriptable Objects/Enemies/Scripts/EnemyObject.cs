@@ -12,6 +12,7 @@ public class EnemyObject : ScriptableObject
 
     public float startAggroRange;
     public float loseAggroRange;
+    public float searchResetTime;
 
     public float maxHealth;
     public float currentHealth;
