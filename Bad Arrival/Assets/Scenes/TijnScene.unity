@@ -2436,6 +2436,11 @@ Transform:
   m_Father: {fileID: 1857233517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1711725107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1711725107, guid: a97a8bb5ff93ec849aeecc7247b3d9f5, type: 3}
+  m_PrefabInstance: {fileID: 8576732580819415540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1719947356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +3744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rare Item
       objectReference: {fileID: 0}
+    - target: {fileID: 168396311425097194, guid: 91eee63876895074ead36b575360f311, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: ccfa7f97fa0f6854780e3712be7f6bdb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91eee63876895074ead36b575360f311, type: 3}
 --- !u!1001 &1452588846379575697
@@ -3748,6 +3757,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1452588846516291616, guid: 7cbc01ac2e79a2e4dadf0d657c8c3675, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f44b350a21f88148a9d1d70d44bb0be, type: 2}
     - target: {fileID: 1452588846516291617, guid: 7cbc01ac2e79a2e4dadf0d657c8c3675, type: 3}
       propertyPath: m_Name
       value: Legendary Item
@@ -3854,6 +3867,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3044841004634190816, guid: 83a883fd08f51aa4bb35e3c7909a9bff, type: 3}
+      propertyPath: HUDHolder
+      value: 
+      objectReference: {fileID: 1711725107}
+    - target: {fileID: 3044841004634190816, guid: 83a883fd08f51aa4bb35e3c7909a9bff, type: 3}
       propertyPath: playerInfo
       value: 
       objectReference: {fileID: 8659970273531281787}
@@ -3895,6 +3912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Epic Item
       objectReference: {fileID: 0}
+    - target: {fileID: 6180533261089076118, guid: c65dc46597e9dce4b8663e1fa1279357, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a5e7315c4a371e4295e231660eb34b0, type: 2}
     - target: {fileID: 6180533261089076122, guid: c65dc46597e9dce4b8663e1fa1279357, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -4001,6 +4022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Common Item
       objectReference: {fileID: 0}
+    - target: {fileID: 6642890985063472230, guid: 7286dca0f8688c544a5d4444d72713d8, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 915a9249570f6fa4c9c1d8dc842c1abb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7286dca0f8688c544a5d4444d72713d8, type: 3}
 --- !u!1001 &8269088467004100520
@@ -4014,6 +4039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Uncommon Item
       objectReference: {fileID: 0}
+    - target: {fileID: 8269088467427961337, guid: 5b9ab8754dbc5984497984a7ad827c4b, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: f9b40016c37224b4cae1b96297c654c0, type: 2}
     - target: {fileID: 8269088467427961341, guid: 5b9ab8754dbc5984497984a7ad827c4b, type: 3}
       propertyPath: m_RootOrder
       value: 9

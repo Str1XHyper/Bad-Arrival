@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HUDManager : MonoBehaviour
+{
+    [Header("Weapons")]
+    [SerializeField] private GameObject Weapon1;
+    [SerializeField] private GameObject Weapon2;
+    [Range(0, 1)]
+    [SerializeField] private float scalingFactor = 0.75f;
+    [SerializeField] private Sprite UImask;
+    public InventoryObject equipped;
+
+    public void SetActiveWeapon(int index)
+    {
+        if (index != 1)
+        {
+            Weapon1.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+            Weapon2.GetComponent<RectTransform>().localScale = new Vector3(scalingFactor, scalingFactor, 1);
+        }
+        else
+        {
+            Weapon1.GetComponent<RectTransform>().localScale = new Vector3(scalingFactor, scalingFactor, 1);
+            Weapon2.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+
+    private void OnGUI()
+    {
+        var guns = equipped.GetSlots;
+        if (guns[0].ItemObject != null)
+        {
+            Weapon1.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = guns[0].ItemObject.uiDisplay;
+            Weapon1.transform.GetChild(1).GetComponent<TMP_Text>().text = $"{guns[0].item.ammoInMag} / {guns[0].ItemObject.GetMagCapacity(guns[0].item)}";
+        }
+        else
+        {
+            Weapon1.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UImask;
+            Weapon1.transform.GetChild(1).GetComponent<TMP_Text>().text = $"";
+        }
+        if (guns[1].ItemObject != null)
+        {
+            Weapon2.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = guns[1].ItemObject.uiDisplay;
+            Weapon2.transform.GetChild(1).GetComponent<TMP_Text>().text = $"{guns[1].item.ammoInMag} / {guns[1].ItemObject.GetMagCapacity(guns[1].item)}";
+        }
+        else
+        {
+            Weapon2.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UImask;
+            Weapon2.transform.GetChild(1).GetComponent<TMP_Text>().text = $"";
+        }
+    }
+}

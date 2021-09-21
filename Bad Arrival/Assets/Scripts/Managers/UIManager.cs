@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+
+        inventoryHolder.SetActive(true);
     }
     #endregion
 
@@ -38,23 +40,28 @@ public class UIManager : MonoBehaviour
     [Header("Player info")]
     public PlayerInfo playerInfo;
 
-    [Space]
-    [SerializeField] private GameObject playerController;
+    [Header("Inventory")]
     [SerializeField] private GameObject inventoryHolder;
-    [SerializeField] private GameObject interactMessage;
     [SerializeField] private GameObject ActiveSlot1;
     [SerializeField] private GameObject ActiveSlot2;
 
+    [Header("HUD")]
+    [SerializeField] private GameObject HUDHolder;
+    private HUDManager hudManager;
+    
+    [Space]
+    [SerializeField] private GameObject interactMessage;
 
     private void Start()
     {
-        //mouseLook = GetComponent<MouseLook>();
+        hudManager = HUDHolder.GetComponent<HUDManager>();
     }
 
     public void OpenInventory()
     {
         Cursor.lockState = CursorLockMode.None;
         inventoryHolder.SetActive(true);
+        HUDHolder.SetActive(false);
         InputManager.instance.DisableControls();
     }
 
@@ -62,6 +69,7 @@ public class UIManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         inventoryHolder.SetActive(false);
+        HUDHolder.SetActive(true);
         InputManager.instance.EnableControls();
     }
 
@@ -118,6 +126,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
 
     public void UpdateActiveSlot2(Item item, ItemObject itemObject)
     {
@@ -188,5 +197,10 @@ public class UIManager : MonoBehaviour
     public void UpdateHealth(int currentHP)
     {
         playerInfo.UpdateHealth(currentHP);
+    }
+
+    public void SetActiveWeapon(int index)
+    {
+        hudManager.SetActiveWeapon(index);
     }
 }
