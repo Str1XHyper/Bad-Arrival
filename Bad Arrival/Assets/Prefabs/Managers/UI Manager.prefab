@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3044841004634190751}
   - component: {fileID: 3044841004634190816}
+  - component: {fileID: 1432195408}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -59,3 +60,17 @@ MonoBehaviour:
   interactMessage: {fileID: 0}
   ActiveSlot1: {fileID: 0}
   ActiveSlot2: {fileID: 0}
+--- !u!114 &1432195408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044841004634190750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38627e5a7b192484c963d8a8d4e6189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCrosshair: {fileID: 2800000, guid: 80c6749c4e1c2d0459553f6d66e74b8e, type: 3}
+  crosshairScale: 0.5
