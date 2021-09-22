@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
         }
 
         inventoryHolder.SetActive(true);
+        hudManager = HUDHolder.GetComponent<HUDManager>();
     }
     #endregion
 
@@ -52,10 +53,6 @@ public class UIManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject interactMessage;
 
-    private void Start()
-    {
-        hudManager = HUDHolder.GetComponent<HUDManager>();
-    }
 
     public void OpenInventory()
     {
@@ -197,6 +194,7 @@ public class UIManager : MonoBehaviour
     public void UpdateHealth(int currentHP)
     {
         playerInfo.UpdateHealth(currentHP);
+        hudManager.UpdateHealth(currentHP);
     }
 
     public void SetActiveWeapon(int index)

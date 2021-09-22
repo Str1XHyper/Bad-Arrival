@@ -6,13 +6,18 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    [Header("Global")]
+    [SerializeField] private Sprite UIMask;
+    [SerializeField] private InventoryObject equipped;
+
     [Header("Weapons")]
     [SerializeField] private GameObject Weapon1;
     [SerializeField] private GameObject Weapon2;
     [Range(0, 1)]
     [SerializeField] private float scalingFactor = 0.75f;
-    [SerializeField] private Sprite UImask;
-    public InventoryObject equipped;
+
+    [Header("Health")]
+    [SerializeField] private TMP_Text Health;
 
     public void SetActiveWeapon(int index)
     {
@@ -39,7 +44,7 @@ public class HUDManager : MonoBehaviour
         }
         else
         {
-            Weapon1.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UImask;
+            Weapon1.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UIMask;
             Weapon1.transform.GetChild(1).GetComponent<TMP_Text>().text = $"";
         }
         if (guns[1].ItemObject != null)
@@ -49,8 +54,14 @@ public class HUDManager : MonoBehaviour
         }
         else
         {
-            Weapon2.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UImask;
+            Weapon2.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UIMask;
             Weapon2.transform.GetChild(1).GetComponent<TMP_Text>().text = $"";
         }
+    }
+
+    public void UpdateHealth(int currentHP)
+    {
+        int currentHealth = Mathf.RoundToInt((float)currentHP / (float)Player.instance.MaxHP * 100);
+        Health.text = $"{currentHealth} / 100";
     }
 }
