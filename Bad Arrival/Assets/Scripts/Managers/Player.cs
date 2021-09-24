@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public InventorySlot[] GetEquippedGuns()
+    {
+        return equipment.GetSlots;
+    }
+
     public InventorySlot GetHeldSlot()
     {
         return equipment.GetSlots[equippedSlot];
@@ -84,6 +89,7 @@ public class Player : MonoBehaviour
     public void SetActiveSlot(int slot)
     {
         equippedSlot = slot;
+        UIManager.instance.SetActiveWeapon(slot);
         if (equipment.GetSlots[equippedSlot].ItemObject)
         {
             CrosshairManager.instance.SetCrosshair(equipment.GetSlots[equippedSlot].ItemObject.Crosshair);
