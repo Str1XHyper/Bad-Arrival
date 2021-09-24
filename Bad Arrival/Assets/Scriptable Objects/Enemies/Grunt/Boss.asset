@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d1146ace28f164d93c67f267a17fa9, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  aggroMoveSpeed: 9
-  patrolMoveSpeed: 6
-  attackRange: 60
+  aggroMoveSpeed: 0
+  patrolMoveSpeed: 0
+  attackRange: 150
   timeBetweenAttacks: 0.5
-  startAggroRange: 60
-  loseAggroRange: 60
+  startAggroRange: 150
+  loseAggroRange: 150
   searchResetTime: 1
   maxHealth: 1000
   currentHealth: 1000

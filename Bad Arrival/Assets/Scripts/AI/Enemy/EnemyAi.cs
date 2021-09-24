@@ -30,6 +30,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float timeBetweenAttacks;
 
     [SerializeField] private float searchResetTime;
+    public Vector3 Destination;
     private float searchTimeElapsed;
 
     private AbilityHandler abilityHandler;
@@ -88,6 +89,7 @@ public class EnemyAi : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Destination = agent.destination;
         switch (behaviourState)
         {
             case AiBehaviourState.Idle:
@@ -265,7 +267,7 @@ public class EnemyAi : MonoBehaviour
         Vector3 direction = (endPoint - startPoint).normalized;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPoint, direction, out hit, loseAggroRange, raycastLayers))
+        if (Physics.Raycast(startPoint, direction, out hit, loseAggroRange, ~raycastLayers))
         {
             Debug.DrawRay(startPoint, direction * hit.distance, Color.red);
             if (hit.transform.CompareTag("Player"))

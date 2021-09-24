@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     #endregion
 
     public int MaxHP = 150;
-    private int currentHP = 50;
+    private int currentHP = 150;
 
 
     public int equippedSlot { get; private set; } = 0;

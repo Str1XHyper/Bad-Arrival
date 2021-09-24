@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e46d776cb393c4fb334631754c8bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 25
   destroyTime: 5
   damageAmount: 20
   targetPosition: {x: 161, y: 2.1, z: -63.4}
@@ -164,4 +164,4 @@ MonoBehaviour:
   height: 0
   startHeight: 0
   maxHeightReached: 0
-  timeToReachTarget: 5
+  timeToReachTarget: 2
