@@ -18,6 +18,38 @@ public class InputManager : MonoBehaviour
 
     private PlayerControls playerControls;
 
+    public bool MovementEnabled = true;
+    public bool InteractionEnabled = true;
+    public bool CombatEnabled = true;
+
+    private void Start()
+    {
+        if(MovementEnabled)
+        {
+            playerControls.Movement.Enable();
+        }
+        else
+        {
+            playerControls.Movement.Disable();
+        }
+        if (InteractionEnabled)
+        {
+            playerControls.Interaction.Enable();
+        }
+        else
+        {
+            playerControls.Interaction.Disable();
+        }
+        if (CombatEnabled)
+        {
+            playerControls.Combat.Enable();
+        }
+        else
+        {
+            playerControls.Combat.Disable();
+        }
+    }
+
 
     private void OnEnable()
     {
