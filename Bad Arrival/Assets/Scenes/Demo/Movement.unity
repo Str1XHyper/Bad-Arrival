@@ -6646,6 +6646,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 338067670, guid: a97a8bb5ff93ec849aeecc7247b3d9f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1015607765, guid: a97a8bb5ff93ec849aeecc7247b3d9f5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6654,7 +6658,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1436642929, guid: a97a8bb5ff93ec849aeecc7247b3d9f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1711725107, guid: a97a8bb5ff93ec849aeecc7247b3d9f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878425921, guid: a97a8bb5ff93ec849aeecc7247b3d9f5, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -6899,8 +6911,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementEnabled: 1
-  InteractionEnabled: 1
-  CombatEnabled: 1
+  InteractionEnabled: 0
+  CombatEnabled: 0
 --- !u!1 &1849796755
 GameObject:
   m_ObjectHideFlags: 0
