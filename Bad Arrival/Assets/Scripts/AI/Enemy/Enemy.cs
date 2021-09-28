@@ -37,6 +37,10 @@ public class Enemy : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        gruntAi.StartAggro();
+        if(gruntAi != null)
+        {
+            gruntAi.StartAggro();
+        }
+        
     }
 }
