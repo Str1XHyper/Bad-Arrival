@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformToggle : MonoBehaviour
+public class ToggleDissolve : MonoBehaviour
 {
     private BoxCollider boxCollider;
     [SerializeField]private float enabledTime;
