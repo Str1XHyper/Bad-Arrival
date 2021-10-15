@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecfd0ed09560f44abce328ded464728, type: 3}
   m_Name: Capture Point Setting
   m_EditorClassIdentifier: 
-  TimeToCapInSeconds: 15
+  TimeToCapInSeconds: 3
