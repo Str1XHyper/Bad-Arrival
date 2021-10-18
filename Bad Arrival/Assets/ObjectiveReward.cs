@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ObjectiveRewardTypes{
-    DOOR,
-    ITEM,
-    CHEST,
+public enum ObjectiveRewardTypes
+{
+    ACTIVATE_ON_COMPLETE,
+    DEACTIVATE_ON_COMPLETE
 }
 public class ObjectiveReward : MonoBehaviour
 {
@@ -14,30 +14,25 @@ public class ObjectiveReward : MonoBehaviour
     {
         switch (RewardType)
         {
-            case ObjectiveRewardTypes.DOOR:
+            case ObjectiveRewardTypes.ACTIVATE_ON_COMPLETE:
+                gameObject.SetActive(false);
+                break;
+            case ObjectiveRewardTypes.DEACTIVATE_ON_COMPLETE:
                 gameObject.SetActive(true);
-                break;
-            case ObjectiveRewardTypes.ITEM:
-                gameObject.SetActive(false);
-                break;
-            case ObjectiveRewardTypes.CHEST:
-                gameObject.SetActive(false);
                 break;
         }
     }
+
 
     public void CompleteObjective()
     {
         switch (RewardType)
         {
-            case ObjectiveRewardTypes.DOOR:
+            case ObjectiveRewardTypes.ACTIVATE_ON_COMPLETE:
+                gameObject.SetActive(true);
+                break;
+            case ObjectiveRewardTypes.DEACTIVATE_ON_COMPLETE:
                 gameObject.SetActive(false);
-                break;
-            case ObjectiveRewardTypes.ITEM:
-                gameObject.SetActive(true);
-                break;
-            case ObjectiveRewardTypes.CHEST:
-                gameObject.SetActive(true);
                 break;
         }
     }
