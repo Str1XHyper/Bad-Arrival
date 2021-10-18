@@ -38,6 +38,11 @@ public class UIManager : MonoBehaviour
     public Color EpicColor = new Color(0.6f, 0.5f, 0.7f, 0.5f);
     public Color LegendaryColor = new Color(0.7f, 0.6f, 0.5f, 0.5f);
 
+    public void SetProgressBarTarget(CapturePoint capturePoint)
+    {
+        hudManager.SetSliderTarget(capturePoint);
+    }
+
     [Header("Player info")]
     public PlayerInfo playerInfo;
 
