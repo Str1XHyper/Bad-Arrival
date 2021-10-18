@@ -19,6 +19,10 @@ public class HUDManager : MonoBehaviour
     [Header("Health")]
     [SerializeField] private TMP_Text Health;
 
+    [Header("ProgressBar")]
+    [SerializeField] private Slider ProgressBar;
+    private CapturePoint target = null;
+
     public void SetActiveWeapon(int index)
     {
         if (index != 1)
@@ -31,6 +35,11 @@ public class HUDManager : MonoBehaviour
             Weapon1.GetComponent<RectTransform>().localScale = new Vector3(scalingFactor, scalingFactor, 1);
             Weapon2.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
+    }
+
+    public void SetSliderTarget(CapturePoint target)
+    {
+        this.target = target;
     }
 
 
@@ -56,6 +65,14 @@ public class HUDManager : MonoBehaviour
         {
             Weapon2.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = UIMask;
             Weapon2.transform.GetChild(1).GetComponent<TMP_Text>().text = $"";
+        }
+        if(target != null)
+        {
+            ProgressBar.gameObject.SetActive(true);
+            ProgressBar.value = target.PercentageFinished;
+        } else if(ProgressBar.gameObject.activeSelf && target == null)
+        {
+            ProgressBar.gameObject.SetActive(false);
         }
     }
 
