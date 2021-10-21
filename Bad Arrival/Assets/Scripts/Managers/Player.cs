@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     #endregion
 
     public int MaxHP = 150;
-    private int currentHP = 50;
+    private int currentHP = 150;
 
 
     public int equippedSlot { get; private set; } = 0;
@@ -71,6 +71,16 @@ public class Player : MonoBehaviour
     {
         Debug.LogWarning("Player DIED!");
         //Play death animation
+    }
+
+    public int GetHealth()
+    {
+        return currentHP;
+    }
+
+    public void ResetHealth()
+    {
+        currentHP = MaxHP;
     }
 
     public bool PickUpItem(ItemObject itemObject)
