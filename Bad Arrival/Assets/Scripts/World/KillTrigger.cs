@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KillTrigger : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     private Vector3 startPosition;
     private CharacterController characterController;
 
@@ -12,6 +12,7 @@ public class KillTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = Player.instance.gameObject;
         startPosition = player.transform.position;
         characterController = player.GetComponent<CharacterController>();
     }

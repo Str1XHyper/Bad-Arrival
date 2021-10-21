@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ToggleDissolve : MonoBehaviour
 {
-    private BoxCollider boxCollider;
+    private MeshCollider collider;
     [SerializeField]private float enabledTime;
     [SerializeField] private float disabledTime;
     [SerializeField] private float dissolveTime;
+    [SerializeField] private float startDelay;
+    [SerializeField] private float dissolveScale;
     private float timeSinceLastStateChange;
     [SerializeField] private PlatformStates platformState;
     private float dissolveFactor;
@@ -25,9 +27,10 @@ public class ToggleDissolve : MonoBehaviour
     void Start()
     {
         renderer = gameObject.GetComponent<Renderer>();
+        renderer.material.SetFloat("_DissolveScale", dissolveScale);
         dissolveFactor = 1 / dissolveTime;
         platformState = PlatformStates.Enabled;
-        boxCollider = GetComponent<BoxCollider>();
+        collider = GetComponent<MeshCollider>();
     }
 
     // Update is called once per frame
@@ -38,23 +41,28 @@ public class ToggleDissolve : MonoBehaviour
 
     private void StateHandler()
     {
-        switch (platformState)
+        if(Time.timeSinceLevelLoad > startDelay)
         {
-            case PlatformStates.Dissolving:
-                Dissolving();
-                break;
-            case PlatformStates.Materializing:
-                Materializing();
-                break;
-            case PlatformStates.Enabled:
-                Enabled();
-                break;
-            case PlatformStates.disabled:
-                Disabled();
-                break;
-            default:
-                break;
+            switch (platformState)
+            {
+                case PlatformStates.Dissolving:
+                    Dissolving();
+                    break;
+                case PlatformStates.Materializing:
+                    Materializing();
+                    break;
+                case PlatformStates.Enabled:
+                    Enabled();
+                    break;
+                case PlatformStates.disabled:
+                    Disabled();
+                    break;
+                default:
+                    break;
+            }
         }
+
+        
     }
 
  
@@ -68,7 +76,7 @@ public class ToggleDissolve : MonoBehaviour
         {
             timeSinceLastStateChange = 0;
             platformState = PlatformStates.disabled;
-            boxCollider.enabled = false;
+            collider.enabled = false;
         }
     }
 
@@ -102,7 +110,7 @@ public class ToggleDissolve : MonoBehaviour
         {
             timeSinceLastStateChange = 0;
             platformState = PlatformStates.Materializing;
-            boxCollider.enabled = true;
+            collider.enabled = true;
         }
     }
 }
