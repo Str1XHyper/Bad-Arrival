@@ -21,7 +21,7 @@ MonoBehaviour:
   data:
     Name: 
     Rarity: 0
-    Id: 1
+    Id: 2
     ammoInMag: 0
     buffs:
     - modifier: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
       min: 0
       max: 0
   BaseDamage: 150
-  BaseRecoilStrength: 40
+  BaseRecoilStrength: 70
   BaseRoundsPerMinute: 30
   BaseMagazineCapacity: 8
   BaseReloadTime: 1.2
