@@ -112,6 +112,8 @@ public abstract class UserInterface : MonoBehaviour
         Destroy(MouseData.tempItemBeingDragged);
         if (MouseData.interfaceMouseIsOver == null)
         {
+            Vector3 spawnPos = Player.instance.transform.position + Camera.main.transform.forward + new Vector3(0,01,0);
+            Instantiate( slotsOnInterface[obj].ItemObject.groundItem,spawnPos, Quaternion.identity);
             slotsOnInterface[obj].RemoveItem();
             return;
         }

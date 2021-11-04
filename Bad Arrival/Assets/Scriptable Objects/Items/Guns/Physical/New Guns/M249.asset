@@ -21,7 +21,7 @@ MonoBehaviour:
   data:
     Name: 
     Rarity: 0
-    Id: 1
+    Id: 3
     ammoInMag: 0
     buffs:
     - modifier: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
       value: 0
       min: 0
       max: 0
+  groundItem: {fileID: 4552408548541333958, guid: e4fbe37692d047a41b17a61964df7624, type: 3}
   BaseDamage: 8
   BaseRecoilStrength: 25
   BaseRoundsPerMinute: 1200
