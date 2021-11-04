@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d1146ace28f164d93c67f267a17fa9, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  aggroMoveSpeed: 9
+  patrolMoveSpeed: 6
+  attackRange: 60
+  timeBetweenAttacks: 0.5
+  startAggroRange: 60
+  loseAggroRange: 60
+  searchResetTime: 1
+  maxHealth: 1000
+  currentHealth: 1000
+  maxShield: 1000
+  currentShield: 1000
+  abilities:
+  - {fileID: 3608382083142393213, guid: effb6ace0e14fc44494e359c84e90d18, type: 3}
+  lootpool: {fileID: 11400000, guid: 49c9d9a0bc822964591277be54fc4306, type: 2}

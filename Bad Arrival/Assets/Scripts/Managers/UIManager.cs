@@ -15,7 +15,9 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
-        mouseLook = playerController.GetComponent<MouseLook>();
+
+        inventoryHolder.SetActive(true);
+        hudManager = HUDHolder.GetComponent<HUDManager>();
     }
     #endregion
 
@@ -24,6 +26,11 @@ public class UIManager : MonoBehaviour
     public Sprite physicalIcon;
     public Sprite UIMask;
 
+    [Range(0.1f, 2)]
+    [SerializeField] private float hitmarkerScale = 0.5f;
+    public Texture2D Hitmarker;
+    private bool drawHitmarker = false;
+
     [Header("Colors")]
     public Color CommonColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
     public Color UncommonColor = new Color(0.5f, 0.7f, 0.5f, 0.5f);
@@ -31,31 +38,41 @@ public class UIManager : MonoBehaviour
     public Color EpicColor = new Color(0.6f, 0.5f, 0.7f, 0.5f);
     public Color LegendaryColor = new Color(0.7f, 0.6f, 0.5f, 0.5f);
 
-    [Space]
-    [SerializeField] private GameObject playerController;
+    public void SetProgressBarTarget(CapturePoint capturePoint)
+    {
+        hudManager.SetSliderTarget(capturePoint);
+    }
+
+    [Header("Player info")]
+    public PlayerInfo playerInfo;
+
+    [Header("Inventory")]
     [SerializeField] private GameObject inventoryHolder;
-    [SerializeField] private GameObject interactMessage;
     [SerializeField] private GameObject ActiveSlot1;
     [SerializeField] private GameObject ActiveSlot2;
-    private MouseLook mouseLook;
 
-    private void Start()
-    {
-        //mouseLook = GetComponent<MouseLook>();
-    }
+    [Header("HUD")]
+    [SerializeField] private GameObject HUDHolder;
+    private HUDManager hudManager;
+    
+    [Space]
+    [SerializeField] private GameObject interactMessage;
+
 
     public void OpenInventory()
     {
         Cursor.lockState = CursorLockMode.None;
-        mouseLook.SetLookState(false);
         inventoryHolder.SetActive(true);
+        HUDHolder.SetActive(false);
+        InputManager.instance.DisableControls();
     }
 
     public void CloseInventory()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        mouseLook.SetLookState(true);
         inventoryHolder.SetActive(false);
+        HUDHolder.SetActive(true);
+        InputManager.instance.EnableControls();
     }
 
     public void CanInteract()
@@ -69,8 +86,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateActiveSlot1(Item item, ItemObject itemObject)
     {
-        var slotInfo = ActiveSlot1.GetComponentInChildren<GunInfo>(); 
-        
+        var slotInfo = ActiveSlot1.GetComponentInChildren<GunInfo>();
+
         if (itemObject != null)
         {
             slotInfo.UpdateInfo(item, itemObject);
@@ -99,14 +116,26 @@ public class UIManager : MonoBehaviour
             slotInfo.ClearInfo();
             slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
         }
+        if (Player.instance.equippedSlot == 0)
+        {
+            if (itemObject)
+            {
+                CrosshairManager.instance.SetCrosshair(itemObject.Crosshair);
+            }
+            else
+            {
+                CrosshairManager.instance.SetCrosshair(null);
+            }
+        }
     }
+
 
     public void UpdateActiveSlot2(Item item, ItemObject itemObject)
     {
         var slotInfo = ActiveSlot2.GetComponentInChildren<GunInfo>();
         if (itemObject != null)
         {
-            slotInfo.UpdateInfo(item, itemObject); 
+            slotInfo.UpdateInfo(item, itemObject);
             switch (itemObject.Rarity)
             {
                 case Rarities.Common:
@@ -132,5 +161,49 @@ public class UIManager : MonoBehaviour
             slotInfo.ClearInfo();
             slotInfo.gameObject.GetComponent<Image>().color = CommonColor;
         }
+
+        if (Player.instance.equippedSlot == 1)
+        {
+            if (itemObject)
+            {
+                CrosshairManager.instance.SetCrosshair(itemObject.Crosshair);
+            }
+            else
+            {
+                CrosshairManager.instance.SetCrosshair(null);
+            }
+        }
+    }
+
+    public void ShowHitmarker()
+    {
+        drawHitmarker = true;
+        Invoke("UnshowHitmarker", 0.1f);
+    }
+
+    public void UnshowHitmarker()
+    {
+        drawHitmarker = false;
+    }
+
+    private void OnGUI()
+    {
+        float xMin = (Screen.width / 2) - (Hitmarker.width * hitmarkerScale / 2);
+        float yMin = (Screen.height / 2) - (Hitmarker.height * hitmarkerScale / 2);
+        if (drawHitmarker)
+        {
+            GUI.DrawTexture(new Rect(xMin, yMin, Hitmarker.width * hitmarkerScale, Hitmarker.height * hitmarkerScale), Hitmarker);
+        }
+    }
+
+    public void UpdateHealth(int currentHP)
+    {
+        playerInfo.UpdateHealth(currentHP);
+        hudManager.UpdateHealth(currentHP);
+    }
+
+    public void SetActiveWeapon(int index)
+    {
+        hudManager.SetActiveWeapon(index);
     }
 }

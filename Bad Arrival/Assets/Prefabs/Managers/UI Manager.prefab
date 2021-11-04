@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3044841004634190750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3044841004634190751}
+  - component: {fileID: 3044841004634190816}
+  - component: {fileID: 1432195408}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3044841004634190751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044841004634190750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3044841004634190816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044841004634190750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52cd9020e8013e46aa662e25d8ed35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyIcon: {fileID: 21300000, guid: 89176ffd47e222248b2557c10c6f97aa, type: 3}
+  physicalIcon: {fileID: 21300000, guid: 4bd13c03500fb8849b1a168f8d3ee0f2, type: 3}
+  UIMask: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  hitmarkerScale: 0.1
+  Hitmarker: {fileID: 2800000, guid: 9d557483fb1ae9b4db11c5416e372099, type: 3}
+  CommonColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
+  UncommonColor: {r: 0.5, g: 0.7, b: 0.5, a: 0.5019608}
+  RareColor: {r: 0.5, g: 0.6, b: 0.7, a: 0.5019608}
+  EpicColor: {r: 0.6, g: 0.5, b: 0.7, a: 0.5019608}
+  LegendaryColor: {r: 0.7, g: 0.6, b: 0.5, a: 0.5019608}
+  playerInfo: {fileID: 0}
+  playerController: {fileID: 0}
+  inventoryHolder: {fileID: 0}
+  interactMessage: {fileID: 0}
+  ActiveSlot1: {fileID: 0}
+  ActiveSlot2: {fileID: 0}
+--- !u!114 &1432195408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044841004634190750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38627e5a7b192484c963d8a8d4e6189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCrosshair: {fileID: 2800000, guid: 80c6749c4e1c2d0459553f6d66e74b8e, type: 3}
+  crosshairScale: 0.5

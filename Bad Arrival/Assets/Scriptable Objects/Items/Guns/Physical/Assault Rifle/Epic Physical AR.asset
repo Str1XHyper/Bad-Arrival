@@ -22,6 +22,7 @@ MonoBehaviour:
     Name: 
     Rarity: 0
     Id: 3
+    ammoInMag: 0
     buffs:
     - modifier: 0
       value: 0
@@ -39,11 +40,17 @@ MonoBehaviour:
       value: 0
       min: 11
       max: 15
+    - modifier: 4
+      value: 0
+      min: 11
+      max: 15
   BaseDamage: 50
   BaseRecoilStrength: 20
   BaseRoundsPerMinute: 450
   BaseMagazineCapacity: 30
+  BaseReloadTime: 1.2
+  Crosshair: {fileID: 2800000, guid: 77927da068e876f45b1cb6acb70ac20d, type: 3}
   FireType: 0
   GunType: 1
-  Model: {fileID: 0}
+  Model: {fileID: 6180533261089076117, guid: c65dc46597e9dce4b8663e1fa1279357, type: 3}
   HeadshotMultiplier: 1.3

@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
-    [SerializeField] private GameObject physicalBulletImpact;
     private InventorySlot heldSlot;
+    private bool inventoryOpen = false;
+    private InputManager inputManager;
+    private GunManager gunMechanics;
     [SerializeField] private float interactRange;
 
-    public int cooldown;
-    private bool inventoryOpen = false;
+    private void Awake()
+    {
+        gunMechanics = GetComponent<GunManager>();
+    }
+
     private void Start()
     {
         UIManager.instance.CloseInventory();
+        inputManager = InputManager.instance;
     }
 
     private void Update()
@@ -21,34 +27,66 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         if (!inventoryOpen)
         {
-            if(Player.instance.GetHeldSlot().ItemObject != null)
+            if (Player.instance.GetHeldSlot().ItemObject != null)
             {
                 heldSlot = Player.instance.GetHeldSlot();
-                if (heldSlot.ItemObject.FireType == FireTypes.Full_Auto)
+                if (heldSlot.item.ammoInMag > 0)
                 {
-                    if (Input.GetKey(KeyCode.Mouse0) && cooldown <= 0)
+                    if (heldSlot.ItemObject.FireType == FireTypes.Full_Auto)
                     {
-                        Shoot(heldSlot);
+                        if (inputManager.PlayerIsFiring() && gunMechanics.cooldown <= 0)
+                        {
+                            gunMechanics.Shoot(heldSlot);
+                        }
+                    }
+                    else
+                    {
+                        if (inputManager.PlayerFired() && gunMechanics.cooldown <= 0)
+                        {
+                            gunMechanics.Shoot(heldSlot);
+                        }
+                    }
+                }
+                else if (!gunMechanics.isReloading)
+                {
+                    StartCoroutine(gunMechanics.Reload(heldSlot));
+                    Player.instance.equippedGunVisual.GetComponent<GunVisualEffect>().StartReloadAnimation(heldSlot);
+                }
+
+                if (inputManager.PlayerReloaded() && !gunMechanics.isReloading)
+                {
+                    StartCoroutine(gunMechanics.Reload(heldSlot));
+                    Player.instance.equippedGunVisual.GetComponent<GunVisualEffect>().StartReloadAnimation(heldSlot);
+                }
+            }
+
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange))
+            {
+                if (hit.collider.CompareTag("GroundItem"))
+                {
+                    UIManager.instance.CanInteract();
+                    if (inputManager.PickedUpGroundItem())
+                    {
+                        if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
+                    }
+                }
+                else if (hit.collider.CompareTag("RandomLoot"))
+                {
+                    UIManager.instance.CanInteract();
+                    if (inputManager.OpenedChest())
+                    {
+                        if (Player.instance.PickUpItem(hit.collider.GetComponent<LootableChest>().lootpool.GenerateItem()))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
                     }
                 }
                 else
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0) && cooldown <= 0)
-                    {
-                        Shoot(heldSlot);
-                    }
-                }
-            }
-
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange) && hit.collider.tag == "Interactable")
-            {
-                UIManager.instance.CanInteract();
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    if (Player.instance.PickUpItem(hit.collider.GetComponent<GroundItem>()))
-                    {
-                        Destroy(hit.collider.gameObject);
-                    }
+                    UIManager.instance.CanNotInteract();
                 }
             }
             else
@@ -57,7 +95,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (inputManager.OpenedInventory())
         {
             if (inventoryOpen)
             {
@@ -71,24 +109,13 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-    }
-
-    private void FixedUpdate()
-    {
-        cooldown--;
-    }
-
-    private void Shoot(InventorySlot heldGun)
-    {
-        Debug.Log(heldGun.ItemObject.GetRPM(heldGun.item));
-
-        Transform transform = Camera.main.transform;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        if (inputManager.EquippedSlot1())
         {
-            Instantiate(physicalBulletImpact, hit.point, transform.rotation);
-            Debug.Log(transform.forward);
+            Player.instance.SetActiveSlot(0);
         }
-        cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
+        else if (inputManager.EquippedSlot2())
+        {
+            Player.instance.SetActiveSlot(1);
+        }
     }
 }

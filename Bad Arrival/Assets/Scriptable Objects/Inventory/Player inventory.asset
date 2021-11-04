@@ -13,227 +13,187 @@ MonoBehaviour:
   m_Name: Player inventory
   m_EditorClassIdentifier: 
   savePath: 
-  database: {fileID: 11400000, guid: 7784752e3c0029d429f9ec662988dc59, type: 2}
+  database: {fileID: 11400000, guid: fd5d187e3d92ea64787efa9a1f92e2ae, type: 2}
   type: 0
   Container:
     Slots:
     - AllowedItems: 
       item:
-        Name: Legendary Physical AR
-        Rarity: 4
-        Id: 4
-        buffs:
-        - modifier: 0
-          value: 19
-          min: 16
-          max: 20
-        - modifier: 1
-          value: 16
-          min: 16
-          max: 20
-        - modifier: 2
-          value: 19
-          min: 16
-          max: 20
-        - modifier: 3
-          value: 17
-          min: 16
-          max: 20
-      amount: 1
+        Name: 
+        Rarity: 0
+        Id: -1
+        ammoInMag: 0
+        buffs: []
+      amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
-    - AllowedItems: 
-      item:
-        Name: Common Physical AR
-        Rarity: 0
-        Id: 0
-        buffs:
-        - modifier: 0
-          value: 0
-          min: 0
-          max: 0
-        - modifier: 1
-          value: 0
-          min: 0
-          max: 0
-        - modifier: 2
-          value: 0
-          min: 0
-          max: 0
-        - modifier: 3
-          value: 0
-          min: 0
-          max: 0
-      amount: 1
-    - AllowedItems: 
-      item:
-        Name: Uncommon Physical AR
-        Rarity: 1
-        Id: 1
-        buffs:
-        - modifier: 0
-          value: 2
-          min: 1
-          max: 5
-        - modifier: 1
-          value: 2
-          min: 1
-          max: 5
-        - modifier: 2
-          value: 4
-          min: 1
-          max: 5
-        - modifier: 3
-          value: 2
-          min: 1
-          max: 5
-      amount: 1
-    - AllowedItems: 
-      item:
-        Name: Rare Physical AR
-        Rarity: 2
-        Id: 2
-        buffs:
-        - modifier: 0
-          value: 7
-          min: 6
-          max: 10
-        - modifier: 1
-          value: 7
-          min: 6
-          max: 10
-        - modifier: 2
-          value: 8
-          min: 6
-          max: 10
-        - modifier: 3
-          value: 6
-          min: 6
-          max: 10
-      amount: 1
-    - AllowedItems: 
-      item:
-        Name: Legendary Physical AR
-        Rarity: 4
-        Id: 4
-        buffs:
-        - modifier: 0
-          value: 16
-          min: 16
-          max: 20
-        - modifier: 1
-          value: 19
-          min: 16
-          max: 20
-        - modifier: 2
-          value: 19
-          min: 16
-          max: 20
-        - modifier: 3
-          value: 18
-          min: 16
-          max: 20
-      amount: 1
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
     - AllowedItems: 
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Rarity: 0
+        Id: -1
+        ammoInMag: 0
+        buffs: []
+      amount: 0
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Rarity: 0
+        Id: -1
+        ammoInMag: 0
+        buffs: []
+      amount: 0
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Rarity: 0
+        Id: -1
+        ammoInMag: 0
+        buffs: []
+      amount: 0
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Rarity: 0
+        Id: -1
+        ammoInMag: 0
+        buffs: []
+      amount: 0
+      ammoInMagazine: 0
