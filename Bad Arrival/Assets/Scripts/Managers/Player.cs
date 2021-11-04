@@ -25,12 +25,18 @@ public class Player : MonoBehaviour
 
     [SerializeField] private InventoryObject inventory;
     [SerializeField] private InventoryObject equipment;
+    [SerializeField] private Transform Hand;
+    public GameObject equippedGunVisual { get; private set; }
 
     private void Start()
     {
         UIManager.instance.UpdateHealth(currentHP);
-        if(equipment.GetSlots[equippedSlot].ItemObject)
+        resetActiveGunModel();
+        if (equipment.GetSlots[equippedSlot].ItemObject)
+        {
             CrosshairManager.instance.SetCrosshair(equipment.GetSlots[equippedSlot].ItemObject.Crosshair);
+            setActiveGunModel(equipment.GetSlots[equippedSlot].ItemObject);
+        }
         else
             CrosshairManager.instance.SetCrosshair(null);
     }
@@ -100,13 +106,30 @@ public class Player : MonoBehaviour
     {
         equippedSlot = slot;
         UIManager.instance.SetActiveWeapon(slot);
+        resetActiveGunModel();
         if (equipment.GetSlots[equippedSlot].ItemObject)
         {
             CrosshairManager.instance.SetCrosshair(equipment.GetSlots[equippedSlot].ItemObject.Crosshair);
+            setActiveGunModel(equipment.GetSlots[equippedSlot].ItemObject);
         }
         else
         {
             CrosshairManager.instance.SetCrosshair(null);
+        }
+    }
+
+    private void setActiveGunModel(ItemObject gun)
+    {
+        var obj = Instantiate(gun.Model, Hand);
+        equippedGunVisual = obj;
+    }
+
+    private void resetActiveGunModel()
+    {
+        if (equippedGunVisual != null)
+        {
+            Destroy(equippedGunVisual);
+            equippedGunVisual = null;
         }
     }
 }
