@@ -64,6 +64,11 @@ public class InputManager : MonoBehaviour
         return playerControls.Combat.Shoot.ReadValue<float>() > 0;
     }
 
+    public bool PlayerFired()
+    {
+        return playerControls.Combat.Shoot.triggered;
+    }
+
     public bool PlayerReloaded()
     {
         return playerControls.Combat.Reload.triggered;
