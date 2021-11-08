@@ -4044,6 +4044,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4767695781131814599, guid: ce9e543d4c0a7154c9c7841ef5f41dc7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5144995276889135428, guid: ce9e543d4c0a7154c9c7841ef5f41dc7, type: 3}
       propertyPath: m_Name
       value: Barrett
@@ -4289,6 +4293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1855473786}
     m_Modifications:
+    - target: {fileID: 1103631715719581293, guid: fcdb198bd62b6c24ab3de0b50f2abd4c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2466442529017019583, guid: fcdb198bd62b6c24ab3de0b50f2abd4c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5168,6 +5176,10 @@ PrefabInstance:
     - target: {fileID: 4789403311055625320, guid: 1d5124638ba00d643a5043ed36cf2daf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909558329420266263, guid: 1d5124638ba00d643a5043ed36cf2daf, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8981424210961751959, guid: 1d5124638ba00d643a5043ed36cf2daf, type: 3}
       propertyPath: m_IsActive

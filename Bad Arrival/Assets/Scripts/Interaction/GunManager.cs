@@ -24,6 +24,7 @@ public class GunManager : MonoBehaviour
 
     public void Shoot(InventorySlot heldGun)
     {
+        var equippedGun = Player.instance.equippedGunVisual;
         Transform transform = Camera.main.transform;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ~IgnoredLayer, QueryTriggerInteraction.Ignore))
@@ -35,6 +36,11 @@ public class GunManager : MonoBehaviour
             }
 
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
+            equippedGun.GetComponent<AudioSource>().PlayOneShot(equippedGun.GetComponent<AudioSource>().clip);
+            if (equippedGun.GetComponentInChildren<AudioSource>() != null)
+            {
+                StartCoroutine(Rack(equippedGun.transform.GetChild(0).GetComponent<AudioSource>()));
+            }
         }
         heldGun.item.ammoInMag--;
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
@@ -44,6 +50,17 @@ public class GunManager : MonoBehaviour
         //cameraShake.GenerateImpulse(Camera.main.transform.forward);
         cameraShake.GenerateImpulse(recoilStrengthMapped);
 
+    }
+
+    private IEnumerator Rack(AudioSource equippedGunRerackClip)
+    {
+        
+        int RPM = Player.instance.GetHeldSlot().ItemObject.GetRPM(Player.instance.GetHeldSlot().item);
+        float timeBetweenShotsInSeconds = 1f / (RPM / 60f);
+        Debug.Log(timeBetweenShotsInSeconds);
+        yield return new WaitForSeconds(timeBetweenShotsInSeconds - equippedGunRerackClip.clip.length);
+        Debug.Log(equippedGunRerackClip.clip.name);
+        equippedGunRerackClip.PlayOneShot(equippedGunRerackClip.clip);
     }
 
     public IEnumerator Reload(InventorySlot heldGun)
