@@ -44,6 +44,7 @@ MonoBehaviour:
       value: 0
       min: 0
       max: 0
+  groundItem: {fileID: 1670785941137231099, guid: 6fa1310f1b86362459744fda994e438c, type: 3}
   BaseDamage: 24
   BaseRecoilStrength: 10
   BaseRoundsPerMinute: 600

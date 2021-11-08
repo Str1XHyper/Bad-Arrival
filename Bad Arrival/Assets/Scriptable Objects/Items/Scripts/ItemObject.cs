@@ -36,6 +36,7 @@ public class ItemObject : ScriptableObject
     public Sprite uiDisplay;
     public bool stackable;
     public Item data = new Item();
+    public GameObject groundItem;
 
     #region Gun Data
 
