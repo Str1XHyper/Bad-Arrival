@@ -18,7 +18,7 @@ public abstract class UserInterface : MonoBehaviour
     [SerializeField] private Color EpicColor;
     [SerializeField] private Color LegendaryColor;
 
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
@@ -27,14 +27,17 @@ public abstract class UserInterface : MonoBehaviour
 
         }
         CreateSlots();
+        AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
+        AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
+    }
+    private void Start()
+    {
         slotsOnInterface.UpdateSlotDisplay();
         if (gameObject.CompareTag("EquipmentTab"))
         {
             UIManager.instance.UpdateActiveSlot1(inventory.GetSlots[0].item, inventory.GetSlots[0].ItemObject);
             UIManager.instance.UpdateActiveSlot2(inventory.GetSlots[1].item, inventory.GetSlots[1].ItemObject);
         }
-        AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
-        AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
 
     private void OnSlotUpdate(InventorySlot _slot)
@@ -109,6 +112,8 @@ public abstract class UserInterface : MonoBehaviour
         Destroy(MouseData.tempItemBeingDragged);
         if (MouseData.interfaceMouseIsOver == null)
         {
+            Vector3 spawnPos = Player.instance.transform.position + Camera.main.transform.forward + new Vector3(0,01,0);
+            Instantiate( slotsOnInterface[obj].ItemObject.groundItem,spawnPos, Quaternion.identity);
             slotsOnInterface[obj].RemoveItem();
             return;
         }

@@ -13,14 +13,43 @@ MonoBehaviour:
   m_Name: Player inventory
   m_EditorClassIdentifier: 
   savePath: 
-  database: {fileID: 11400000, guid: 7784752e3c0029d429f9ec662988dc59, type: 2}
+  database: {fileID: 11400000, guid: fd5d187e3d92ea64787efa9a1f92e2ae, type: 2}
   type: 0
   Container:
     Slots:
     - AllowedItems: 
       item:
-        Name: Common Physical AR
-        Rarity: 0
+        Name: Uzi
+        Rarity: 1
+        Id: 5
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+      ammoInMagazine: 0
+    - AllowedItems: 
+      item:
+        Name: Ak-74
+        Rarity: 1
         Id: 0
         ammoInMag: 30
         buffs:
@@ -48,97 +77,68 @@ MonoBehaviour:
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: Uncommon Physical AR
-        Rarity: 1
+        Name: M4A1
+        Rarity: 3
         Id: 1
         ammoInMag: 30
         buffs:
         - modifier: 0
-          value: 4
-          min: 1
-          max: 5
+          value: 0
+          min: 0
+          max: 0
         - modifier: 1
-          value: 1
-          min: 1
-          max: 5
+          value: 0
+          min: 0
+          max: 0
         - modifier: 2
-          value: 3
-          min: 1
-          max: 5
+          value: 0
+          min: 0
+          max: 0
         - modifier: 3
-          value: 1
-          min: 1
-          max: 5
+          value: 0
+          min: 0
+          max: 0
         - modifier: 4
-          value: 2
-          min: 1
-          max: 5
+          value: 0
+          min: 0
+          max: 0
       amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: Rare Physical AR
+        Name: Barrett
         Rarity: 2
         Id: 2
-        ammoInMag: 33
+        ammoInMag: 8
         buffs:
         - modifier: 0
-          value: 9
-          min: 6
-          max: 10
+          value: 0
+          min: 0
+          max: 0
         - modifier: 1
-          value: 7
-          min: 6
-          max: 10
+          value: 0
+          min: 0
+          max: 0
         - modifier: 2
-          value: 6
-          min: 6
-          max: 10
+          value: 0
+          min: 0
+          max: 0
         - modifier: 3
-          value: 9
-          min: 6
-          max: 10
+          value: 0
+          min: 0
+          max: 0
         - modifier: 4
-          value: 6
-          min: 6
-          max: 10
+          value: 0
+          min: 0
+          max: 0
       amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: Epic Physical AR
-        Rarity: 3
+        Name: M249
+        Rarity: 2
         Id: 3
-        ammoInMag: 34
-        buffs:
-        - modifier: 0
-          value: 11
-          min: 11
-          max: 15
-        - modifier: 1
-          value: 11
-          min: 11
-          max: 15
-        - modifier: 2
-          value: 14
-          min: 11
-          max: 15
-        - modifier: 3
-          value: 14
-          min: 11
-          max: 15
-        - modifier: 4
-          value: 14
-          min: 11
-          max: 15
-      amount: 1
-      ammoInMagazine: 0
-    - AllowedItems: 
-      item:
-        Name: Common Physical AR
-        Rarity: 0
-        Id: 0
-        ammoInMag: 30
+        ammoInMag: 90
         buffs:
         - modifier: 0
           value: 0

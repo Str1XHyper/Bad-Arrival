@@ -13,21 +13,45 @@ MonoBehaviour:
   m_Name: Player Equipment
   m_EditorClassIdentifier: 
   savePath: 
-  database: {fileID: 11400000, guid: 7784752e3c0029d429f9ec662988dc59, type: 2}
+  database: {fileID: 11400000, guid: fd5d187e3d92ea64787efa9a1f92e2ae, type: 2}
   type: 0
   Container:
     Slots:
     - AllowedItems: 00000000
       item:
-        Name: 
+        Name: M4A1
         Rarity: 0
-        Id: -1
-        buffs: []
-      amount: 0
+        Id: 1
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+      ammoInMagazine: 0
     - AllowedItems: 00000000
       item:
         Name: 
         Rarity: 0
         Id: -1
+        ammoInMag: 0
         buffs: []
       amount: 0
+      ammoInMagazine: 0

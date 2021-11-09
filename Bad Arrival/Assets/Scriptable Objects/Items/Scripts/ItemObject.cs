@@ -36,6 +36,7 @@ public class ItemObject : ScriptableObject
     public Sprite uiDisplay;
     public bool stackable;
     public Item data = new Item();
+    public GameObject groundItem;
 
     #region Gun Data
 
@@ -76,6 +77,11 @@ public class ItemObject : ScriptableObject
     public GunTypes GunType;
     public GameObject Model;
     public float HeadshotMultiplier;
+
+    public AudioClip gunshotSFX;
+    public AudioClip rackingSFX;
+    [Range(0,1f)]
+    public float volumeScale = 1;
 
     #endregion
 

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ab023b83a17254aab7e827b89b141a, type: 3}
+  m_Name: M249
+  m_EditorClassIdentifier: 
+  itemType: 0
+  Name: M249
+  Description: 
+  Rarity: 2
+  uiDisplay: {fileID: 21300000, guid: 187f15bde8019fe4e8413a53161cc006, type: 3}
+  stackable: 0
+  data:
+    Name: 
+    Rarity: 0
+    Id: 3
+    ammoInMag: 0
+    buffs:
+    - modifier: 0
+      value: 0
+      min: 0
+      max: 0
+    - modifier: 1
+      value: 0
+      min: 0
+      max: 0
+    - modifier: 2
+      value: 0
+      min: 0
+      max: 0
+    - modifier: 3
+      value: 0
+      min: 0
+      max: 0
+    - modifier: 4
+      value: 0
+      min: 0
+      max: 0
+  groundItem: {fileID: 4552408548541333958, guid: e4fbe37692d047a41b17a61964df7624, type: 3}
+  BaseDamage: 8
+  BaseRecoilStrength: 25
+  BaseRoundsPerMinute: 1200
+  BaseMagazineCapacity: 90
+  BaseReloadTime: 2.5
+  Crosshair: {fileID: 2800000, guid: 77927da068e876f45b1cb6acb70ac20d, type: 3}
+  FireType: 0
+  GunType: 1
+  Model: {fileID: 2466442529017019583, guid: fcdb198bd62b6c24ab3de0b50f2abd4c, type: 3}
+  HeadshotMultiplier: 1.1
+  gunshotSFX: {fileID: 8300000, guid: 38a59c5aa6284c24f8b494afb6cd66d1, type: 3}
+  rackingSFX: {fileID: 0}
+  volumeScale: 1

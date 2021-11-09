@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver
+public class GroundItem : MonoBehaviour
 {
     public ItemObject item;
 
-    public void OnAfterDeserialize()
+    private void OnCollisionEnter(Collision collision)
     {
-    }
-
-    public void OnBeforeSerialize()
-    {
+        if(collision.collider.tag == "Player")
+        {
+            Player.instance.PickUpItem(this);
+        }
     }
 }

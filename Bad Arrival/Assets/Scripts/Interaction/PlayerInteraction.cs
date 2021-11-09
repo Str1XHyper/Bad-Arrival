@@ -27,10 +27,10 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         if (!inventoryOpen)
         {
-            if(Player.instance.GetHeldSlot().ItemObject != null)
+            if (Player.instance.GetHeldSlot().ItemObject != null)
             {
                 heldSlot = Player.instance.GetHeldSlot();
-                if(heldSlot.item.ammoInMag > 0)
+                if (heldSlot.item.ammoInMag > 0)
                 {
                     if (heldSlot.ItemObject.FireType == FireTypes.Full_Auto)
                     {
@@ -41,20 +41,22 @@ public class PlayerInteraction : MonoBehaviour
                     }
                     else
                     {
-                        if (inputManager.PlayerIsFiring() && gunMechanics.cooldown <= 0)
+                        if (inputManager.PlayerFired() && gunMechanics.cooldown <= 0)
                         {
                             gunMechanics.Shoot(heldSlot);
                         }
                     }
                 }
-                else if(!gunMechanics.isReloading)
+                else if (!gunMechanics.isReloading)
                 {
                     StartCoroutine(gunMechanics.Reload(heldSlot));
+                    Player.instance.equippedGunVisual.GetComponent<GunVisualEffect>().StartReloadAnimation(heldSlot);
                 }
 
                 if (inputManager.PlayerReloaded() && !gunMechanics.isReloading)
                 {
                     StartCoroutine(gunMechanics.Reload(heldSlot));
+                    Player.instance.equippedGunVisual.GetComponent<GunVisualEffect>().StartReloadAnimation(heldSlot);
                 }
             }
 
@@ -70,7 +72,8 @@ public class PlayerInteraction : MonoBehaviour
                             Destroy(hit.collider.gameObject);
                         }
                     }
-                } else if (hit.collider.CompareTag("RandomLoot"))
+                }
+                else if (hit.collider.CompareTag("RandomLoot"))
                 {
                     UIManager.instance.CanInteract();
                     if (inputManager.OpenedChest())
@@ -109,7 +112,8 @@ public class PlayerInteraction : MonoBehaviour
         if (inputManager.EquippedSlot1())
         {
             Player.instance.SetActiveSlot(0);
-        } else if (inputManager.EquippedSlot2())
+        }
+        else if (inputManager.EquippedSlot2())
         {
             Player.instance.SetActiveSlot(1);
         }
