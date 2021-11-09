@@ -1,4 +1,5 @@
 using Cinemachine;
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,10 +38,15 @@ public class GunManager : MonoBehaviour
             }
 
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
-            GunShotSource.PlayOneShot(heldGun.ItemObject.gunshotSFX, heldGun.ItemObject.volumeScale);
+            EventInstance GunShot = FMODUnity.RuntimeManager.CreateInstance(heldGun.ItemObject.fmodDirectory);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(GunShot, Camera.main.transform);
+            GunShot.setVolume(2);
+            GunShot.start();
+            GunShot.release();
+            //GunShotSource.PlayOneShot(heldGun.ItemObject.gunshotSFX, heldGun.ItemObject.volumeScale);
             if (heldGun.ItemObject.rackingSFX != null)
             {
-                StartCoroutine(Rack(heldGun.ItemObject.rackingSFX));
+                StartCoroutine(Rack(heldGun.ItemObject.fmodDirectoryRacking));
             }
         }
         heldGun.item.ammoInMag--;
@@ -53,13 +59,16 @@ public class GunManager : MonoBehaviour
 
     }
 
-    private IEnumerator Rack(AudioClip rackingClip)
+    private IEnumerator Rack(string rackingDirectory)
     {
         int RPM = Player.instance.GetHeldSlot().ItemObject.GetRPM(Player.instance.GetHeldSlot().item);
+        FMOD.Studio.EventInstance GunShot = FMODUnity.RuntimeManager.CreateInstance(rackingDirectory);
         float timeBetweenShotsInSeconds = 1f / (RPM / 60f);
         Debug.Log(timeBetweenShotsInSeconds);
-        yield return new WaitForSeconds(timeBetweenShotsInSeconds - rackingClip.length);
-        GunShotSource.PlayOneShot(rackingClip);
+        yield return new WaitForSeconds(timeBetweenShotsInSeconds - 0.760f);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(GunShot, Camera.main.transform);
+        GunShot.start();
+        GunShot.release();
     }
 
     public IEnumerator Reload(InventorySlot heldGun)

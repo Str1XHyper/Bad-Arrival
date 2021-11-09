@@ -82,6 +82,8 @@ public class ItemObject : ScriptableObject
     public AudioClip rackingSFX;
     [Range(0,1f)]
     public float volumeScale = 1;
+    public string fmodDirectory;
+    public string fmodDirectoryRacking;
 
     #endregion
 

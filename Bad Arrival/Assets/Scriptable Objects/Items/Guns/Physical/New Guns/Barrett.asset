@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Barrett .50
   Description: 
   Rarity: 2
-  uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
+  uiDisplay: {fileID: 21300000, guid: e605d78dc993fa3459789f18e2a8fa51, type: 3}
   stackable: 0
   data:
     Name: 
@@ -58,3 +58,5 @@ MonoBehaviour:
   gunshotSFX: {fileID: 8300000, guid: d20230883832d9c4da2deae7065bda9a, type: 3}
   rackingSFX: {fileID: 8300000, guid: 9c4d0f9698a552e49a1acf097522bc1e, type: 3}
   volumeScale: 1
+  fmodDirectory: event:/Gunshot/Barrett
+  fmodDirectoryRacking: event:/Gunshot/Barrett Rerack

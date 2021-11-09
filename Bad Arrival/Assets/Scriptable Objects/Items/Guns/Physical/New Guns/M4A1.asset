@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: M4A1
   Description: 
   Rarity: 3
-  uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 292d14173f4490f4c85516a4e3dbe3a0, type: 3}
   stackable: 0
   data:
     Name: 
@@ -58,3 +58,4 @@ MonoBehaviour:
   gunshotSFX: {fileID: 8300000, guid: 730afa7f08b4b5a4083907f6e4ebbf32, type: 3}
   rackingSFX: {fileID: 0}
   volumeScale: 1
+  fmodDirectory: event:/Gunshot/M4A1
