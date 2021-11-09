@@ -6,6 +6,7 @@ using UnityEngine;
 public class GunManager : MonoBehaviour
 {
     [SerializeField] private GameObject physicalBulletImpact;
+    [SerializeField] private AudioSource GunShotSource;
 
     [SerializeField] private LayerMask IgnoredLayer;
     [HideInInspector] public int cooldown { get; private set; }
@@ -24,6 +25,7 @@ public class GunManager : MonoBehaviour
 
     public void Shoot(InventorySlot heldGun)
     {
+        var equippedGun = Player.instance.equippedGunVisual;
         Transform transform = Camera.main.transform;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ~IgnoredLayer, QueryTriggerInteraction.Ignore))
@@ -35,6 +37,11 @@ public class GunManager : MonoBehaviour
             }
 
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
+            GunShotSource.PlayOneShot(heldGun.ItemObject.gunshotSFX, heldGun.ItemObject.volumeScale);
+            if (heldGun.ItemObject.rackingSFX != null)
+            {
+                StartCoroutine(Rack(heldGun.ItemObject.rackingSFX));
+            }
         }
         heldGun.item.ammoInMag--;
         cooldown = Mathf.RoundToInt(60f / (heldGun.ItemObject.GetRPM(heldGun.item)) / Time.fixedDeltaTime);
@@ -44,6 +51,15 @@ public class GunManager : MonoBehaviour
         //cameraShake.GenerateImpulse(Camera.main.transform.forward);
         cameraShake.GenerateImpulse(recoilStrengthMapped);
 
+    }
+
+    private IEnumerator Rack(AudioClip rackingClip)
+    {
+        int RPM = Player.instance.GetHeldSlot().ItemObject.GetRPM(Player.instance.GetHeldSlot().item);
+        float timeBetweenShotsInSeconds = 1f / (RPM / 60f);
+        Debug.Log(timeBetweenShotsInSeconds);
+        yield return new WaitForSeconds(timeBetweenShotsInSeconds - rackingClip.length);
+        GunShotSource.PlayOneShot(rackingClip);
     }
 
     public IEnumerator Reload(InventorySlot heldGun)
