@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{42b003b8-cf99-419c-83c9-6aa55a6a2c3a}">
+		<property name="assetPath">
+			<value>Uzi.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8720000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2178303f-a941-4ebf-a9d2-e219d34383fb}</destination>
+		</relationship>
+	</object>
+</objects>

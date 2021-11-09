@@ -58,3 +58,5 @@ MonoBehaviour:
   gunshotSFX: {fileID: 8300000, guid: 4288c622b396fbb4baf6a4fbdfa894d0, type: 3}
   rackingSFX: {fileID: 0}
   volumeScale: 0.587
+  fmodDirectory: event:/Gunshot/Uzi
+  fmodDirectoryRacking: 

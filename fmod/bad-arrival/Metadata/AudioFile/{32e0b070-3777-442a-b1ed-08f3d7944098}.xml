@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{32e0b070-3777-442a-b1ed-08f3d7944098}">
+		<property name="assetPath">
+			<value>M1911.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.728</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2178303f-a941-4ebf-a9d2-e219d34383fb}</destination>
+		</relationship>
+	</object>
+</objects>

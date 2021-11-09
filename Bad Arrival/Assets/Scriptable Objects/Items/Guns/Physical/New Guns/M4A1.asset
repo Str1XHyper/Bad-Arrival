@@ -58,3 +58,4 @@ MonoBehaviour:
   gunshotSFX: {fileID: 8300000, guid: 730afa7f08b4b5a4083907f6e4ebbf32, type: 3}
   rackingSFX: {fileID: 0}
   volumeScale: 1
+  fmodDirectory: event:/Gunshot/M4A1

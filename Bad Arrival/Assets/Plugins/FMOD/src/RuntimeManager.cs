@@ -59,6 +59,11 @@ namespace FMODUnity
             return FMOD.RESULT.OK;
         }
 
+        public static FMOD.Studio.EventInstance CreateInstance(object fmodDirectory)
+        {
+            throw new NotImplementedException();
+        }
+
         [AOT.MonoPInvokeCallback(typeof(FMOD.SYSTEM_CALLBACK))]
         static FMOD.RESULT ERROR_CALLBACK(IntPtr system, FMOD.SYSTEM_CALLBACK_TYPE type, IntPtr commanddata1, IntPtr commanddata2, IntPtr userdata)
         {
