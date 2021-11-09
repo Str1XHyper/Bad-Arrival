@@ -19,48 +19,148 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        ammoInMag: 0
-        buffs: []
-      amount: 0
+        Name: Uzi
+        Rarity: 1
+        Id: 5
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        ammoInMag: 0
-        buffs: []
-      amount: 0
+        Name: Ak-74
+        Rarity: 1
+        Id: 0
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        ammoInMag: 0
-        buffs: []
-      amount: 0
+        Name: M4A1
+        Rarity: 3
+        Id: 1
+        ammoInMag: 30
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        ammoInMag: 0
-        buffs: []
-      amount: 0
+        Name: Barrett
+        Rarity: 2
+        Id: 2
+        ammoInMag: 8
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:
-        Name: 
-        Rarity: 0
-        Id: -1
-        ammoInMag: 0
-        buffs: []
-      amount: 0
+        Name: M249
+        Rarity: 2
+        Id: 3
+        ammoInMag: 90
+        buffs:
+        - modifier: 0
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 1
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 2
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 3
+          value: 0
+          min: 0
+          max: 0
+        - modifier: 4
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
       ammoInMagazine: 0
     - AllowedItems: 
       item:

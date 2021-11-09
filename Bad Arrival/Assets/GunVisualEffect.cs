@@ -22,5 +22,7 @@ public class GunVisualEffect : MonoBehaviour
         magazine.SetActive(false);
         yield return new WaitForSeconds(heldGun.ItemObject.GetReloadTime(heldGun.item));
         magazine.SetActive(true);
+        yield return new WaitForSeconds(60);
+        Destroy(magazine);
     }
 }
