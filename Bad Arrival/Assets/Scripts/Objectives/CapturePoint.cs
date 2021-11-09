@@ -8,6 +8,9 @@ public class CapturePoint : MonoBehaviour
     [SerializeField] private CapturePointObject CPSettings;
     [SerializeField] private ObjectiveReward reward;
     [SerializeField] private UnityEvent rewardEvent;
+    [SerializeField] private UnityEvent startEvent;
+
+    private bool eventStarted = false;
 
     private float timeLeftToCapInFrames;
     private bool playerInPoint;
@@ -43,8 +46,17 @@ public class CapturePoint : MonoBehaviour
     {
         if (other.gameObject == Player.instance.gameObject)
         {
-            playerInPoint = true;
-            UIManager.instance.SetProgressBarTarget(this);
+            if(eventStarted != true)
+            {
+                if (startEvent != null)
+                {
+                    startEvent.Invoke();
+                    eventStarted = true;
+                }
+
+                playerInPoint = true;
+                UIManager.instance.SetProgressBarTarget(this);
+            }
         }
     }
 

@@ -16,8 +16,8 @@ MonoBehaviour:
   patrolMoveSpeed: 6
   attackRange: 25
   timeBetweenAttacks: 1
-  startAggroRange: 150
-  loseAggroRange: 150
+  startAggroRange: 250
+  loseAggroRange: 250
   searchResetTime: 1
   maxHealth: 100
   currentHealth: 100

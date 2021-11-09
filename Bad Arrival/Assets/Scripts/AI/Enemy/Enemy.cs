@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Enemy : MonoBehaviour
     private float maxHealth;
     private float currentShield;
     private float maxShield;
+    private bool aggroed = false;
+    [SerializeField] private UnityEvent startEvent;
+    [SerializeField] private UnityEvent deathEvent;
 
     private EnemyAi enemyAi;
 
@@ -26,6 +30,11 @@ public class Enemy : MonoBehaviour
 
     public void ApplyDamage(int damageAmount)
     {
+        if (!aggroed)
+        {
+            startEvent.Invoke();
+        }
+
         currentHealth -= damageAmount;
         if(currentHealth <= 0)
         {
@@ -34,6 +43,10 @@ public class Enemy : MonoBehaviour
             {
                 GameObject droppedItem = Instantiate(item.Model, transform.position, Quaternion.identity);
                 droppedItem.GetComponent<GroundItem>().item = item;
+            }
+            if(deathEvent != null)
+            {
+                deathEvent.Invoke();
             }
             Destroy(gameObject);
         }
