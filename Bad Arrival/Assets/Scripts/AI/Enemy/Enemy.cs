@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     public EnemyObject enemyObject;
 
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float currentShield;
-    [SerializeField] private float maxShield;
+    private float currentHealth;
+    private float maxHealth;
+    private float currentShield;
+    private float maxShield;
+    private bool aggroed = false;
+    [SerializeField] private UnityEvent startEvent;
+    [SerializeField] private UnityEvent deathEvent;
 
-    private EnemyAi gruntAi;
+    private EnemyAi enemyAi;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +25,16 @@ public class Enemy : MonoBehaviour
         currentShield = enemyObject.currentShield;
         maxShield = enemyObject.maxShield;
 
-        gruntAi = this.gameObject.GetComponent<EnemyAi>();
+        enemyAi = this.gameObject.GetComponent<EnemyAi>();
     }
 
     public void ApplyDamage(int damageAmount)
     {
+        if (!aggroed)
+        {
+            startEvent.Invoke();
+        }
+
         currentHealth -= damageAmount;
         if(currentHealth <= 0)
         {
@@ -35,8 +44,22 @@ public class Enemy : MonoBehaviour
                 GameObject droppedItem = Instantiate(item.Model, transform.position, Quaternion.identity);
                 droppedItem.GetComponent<GroundItem>().item = item;
             }
+            if(deathEvent != null)
+            {
+                deathEvent.Invoke();
+            }
             Destroy(gameObject);
         }
-        gruntAi.StartAggro();
+        enemyAi.StartAggro();
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public float getMaxHealth()
+    {
+        return maxHealth;
     }
 }

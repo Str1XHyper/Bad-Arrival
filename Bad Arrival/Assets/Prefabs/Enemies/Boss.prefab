@@ -1522,6 +1522,7 @@ GameObject:
   - component: {fileID: 8956248425331706551}
   - component: {fileID: 8956248425331706550}
   - component: {fileID: 2708299736837962728}
+  - component: {fileID: 1793862125956686977}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Enemy
@@ -1537,7 +1538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8956248425331706548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 227.4, y: 109.38, z: -509.7}
+  m_LocalPosition: {x: 183.46161, y: 52.3, z: 65.64368}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 8956248426748781149}
@@ -1611,11 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a301f7279d81ed142b7dc0f37713c2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: a3cf7d4c8cedd2140b54113b1ed3efe7, type: 2}
-  currentHealth: 0
-  maxHealth: 0
-  currentShield: 0
-  maxShield: 0
+  enemyObject: {fileID: 11400000, guid: 9a870e0d687596d478c3562575f7f1b0, type: 2}
 --- !u!114 &8956248425331706550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,6 +1627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 3608382083142393213, guid: effb6ace0e14fc44494e359c84e90d18, type: 3}
+  - {fileID: 3608382083142393213, guid: 65d2345a670c45147a0c44c38c222fc7, type: 3}
   projectileExit: {fileID: 8956248426690651131}
 --- !u!135 &2708299736837962728
 SphereCollider:
@@ -1642,8 +1640,21 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.9327564
-  m_Center: {x: 0.0023269653, y: 0.53958607, z: 0}
+  m_Radius: 2.632756
+  m_Center: {x: 0.10232697, y: 0.53958607, z: 0}
+--- !u!114 &1793862125956686977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956248425331706548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9873cf46f939614d8a98bb168e6ebf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionAbility: {fileID: 0}
 --- !u!1 &8956248425986079928
 GameObject:
   m_ObjectHideFlags: 0
