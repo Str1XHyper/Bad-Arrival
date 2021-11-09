@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 0
   Name: M249
   Description: 
-  Rarity: 0
+  Rarity: 2
   uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
   stackable: 0
   data:
@@ -55,3 +55,6 @@ MonoBehaviour:
   GunType: 1
   Model: {fileID: 2466442529017019583, guid: fcdb198bd62b6c24ab3de0b50f2abd4c, type: 3}
   HeadshotMultiplier: 1.1
+  gunshotSFX: {fileID: 8300000, guid: 38a59c5aa6284c24f8b494afb6cd66d1, type: 3}
+  rackingSFX: {fileID: 0}
+  volumeScale: 1

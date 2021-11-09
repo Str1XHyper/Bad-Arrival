@@ -10,6 +10,7 @@ TagManager:
   - EquipmentTab
   - GroundItem
   - RandomLoot
+  - Bolt
   layers:
   - Default
   - TransparentFX
