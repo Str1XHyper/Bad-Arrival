@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CapturePoint : MonoBehaviour
 {
     [SerializeField] private CapturePointObject CPSettings;
     [SerializeField] private ObjectiveReward reward;
+    [SerializeField] private UnityEvent rewardEvent;
 
     private float timeLeftToCapInFrames;
     private bool playerInPoint;
@@ -28,6 +30,11 @@ public class CapturePoint : MonoBehaviour
             if(reward != null)
             {
                 reward.CompleteObjective();
+                
+            }
+            if(rewardEvent != null)
+            {
+                rewardEvent.Invoke();
             }
         }
     }

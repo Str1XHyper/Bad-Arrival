@@ -110,3 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CPSettings: {fileID: 11400000, guid: 8ba47a5cb2638984ba6b96ece25e565e, type: 2}
   reward: {fileID: 0}
+  rewardEvent:
+    m_PersistentCalls:
+      m_Calls: []
