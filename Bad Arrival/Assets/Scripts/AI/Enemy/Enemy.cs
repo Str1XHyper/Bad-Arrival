@@ -6,12 +6,12 @@ public class Enemy : MonoBehaviour
 {
     public EnemyObject enemyObject;
 
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float currentShield;
-    [SerializeField] private float maxShield;
+    private float currentHealth;
+    private float maxHealth;
+    private float currentShield;
+    private float maxShield;
 
-    private EnemyAi gruntAi;
+    private EnemyAi enemyAi;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         currentShield = enemyObject.currentShield;
         maxShield = enemyObject.maxShield;
 
-        gruntAi = this.gameObject.GetComponent<EnemyAi>();
+        enemyAi = this.gameObject.GetComponent<EnemyAi>();
     }
 
     public void ApplyDamage(int damageAmount)
@@ -37,6 +37,16 @@ public class Enemy : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        gruntAi.StartAggro();
+        enemyAi.StartAggro();
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public float getMaxHealth()
+    {
+        return maxHealth;
     }
 }

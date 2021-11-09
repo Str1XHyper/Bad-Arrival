@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79d1146ace28f164d93c67f267a17fa9, type: 3}
-  m_Name: Boss
+  m_Name: Grunt Encounter
   m_EditorClassIdentifier: 
-  aggroMoveSpeed: 0
-  patrolMoveSpeed: 0
-  attackRange: 60
-  timeBetweenAttacks: 0.5
-  startAggroRange: 80
-  loseAggroRange: 120
+  aggroMoveSpeed: 9
+  patrolMoveSpeed: 6
+  attackRange: 25
+  timeBetweenAttacks: 1
+  startAggroRange: 150
+  loseAggroRange: 150
   searchResetTime: 1
-  maxHealth: 1000
-  currentHealth: 1000
-  maxShield: 1000
-  currentShield: 1000
+  maxHealth: 100
+  currentHealth: 100
+  maxShield: 100
+  currentShield: 100
   abilities:
-  - {fileID: 3608382083142393213, guid: effb6ace0e14fc44494e359c84e90d18, type: 3}
-  lootpool: {fileID: 11400000, guid: 49c9d9a0bc822964591277be54fc4306, type: 2}
+  - {fileID: 3608382083142393213, guid: 65d2345a670c45147a0c44c38c222fc7, type: 3}
+  lootpool: {fileID: 11400000, guid: 8e6d5bda935d00c45a026f967546e1df, type: 2}
