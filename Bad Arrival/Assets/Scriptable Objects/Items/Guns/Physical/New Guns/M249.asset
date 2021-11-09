@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: M249
   Description: 
   Rarity: 2
-  uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 187f15bde8019fe4e8413a53161cc006, type: 3}
   stackable: 0
   data:
     Name: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: M1911
   Description: 
   Rarity: 0
-  uiDisplay: {fileID: 21300000, guid: a4fdeae85604f1e4384c0537c08a8859, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 536e731327f53094e9fddf81320987a2, type: 3}
   stackable: 0
   data:
     Name: 
