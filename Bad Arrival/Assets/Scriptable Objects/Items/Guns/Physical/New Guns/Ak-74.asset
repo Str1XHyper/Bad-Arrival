@@ -58,3 +58,4 @@ MonoBehaviour:
   gunshotSFX: {fileID: 8300000, guid: c26f4f5d6638d774c84339fdb585ba52, type: 3}
   rackingSFX: {fileID: 0}
   volumeScale: 1
+  fmodDirectory: event:/Gunshot/Ak-74

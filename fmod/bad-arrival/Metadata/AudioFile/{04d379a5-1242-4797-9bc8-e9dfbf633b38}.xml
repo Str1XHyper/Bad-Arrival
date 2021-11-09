@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{04d379a5-1242-4797-9bc8-e9dfbf633b38}">
+		<property name="assetPath">
+			<value>Barrett.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.6559999999999997</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2178303f-a941-4ebf-a9d2-e219d34383fb}</destination>
+		</relationship>
+	</object>
+</objects>
