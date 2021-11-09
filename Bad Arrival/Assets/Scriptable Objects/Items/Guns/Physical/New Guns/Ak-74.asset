@@ -55,3 +55,5 @@ MonoBehaviour:
   GunType: 1
   Model: {fileID: 7832549058194919180, guid: 4745216e845c7a947b5f88294b5884de, type: 3}
   HeadshotMultiplier: 1.3
+  gunshotSFX: {fileID: 8300000, guid: c26f4f5d6638d774c84339fdb585ba52, type: 3}
+  rackingSFX: {fileID: 0}

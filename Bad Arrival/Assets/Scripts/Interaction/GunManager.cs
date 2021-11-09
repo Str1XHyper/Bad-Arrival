@@ -6,6 +6,7 @@ using UnityEngine;
 public class GunManager : MonoBehaviour
 {
     [SerializeField] private GameObject physicalBulletImpact;
+    [SerializeField] private AudioSource GunShotSource;
 
     [SerializeField] private LayerMask IgnoredLayer;
     [HideInInspector] public int cooldown { get; private set; }
@@ -36,10 +37,10 @@ public class GunManager : MonoBehaviour
             }
 
             Instantiate(physicalBulletImpact, hit.point, transform.rotation);
-            equippedGun.GetComponent<AudioSource>().PlayOneShot(equippedGun.GetComponent<AudioSource>().clip);
-            if (equippedGun.GetComponentInChildren<AudioSource>() != null)
+            GunShotSource.PlayOneShot(heldGun.ItemObject.gunshotSFX, heldGun.ItemObject.volumeScale);
+            if (heldGun.ItemObject.rackingSFX != null)
             {
-                StartCoroutine(Rack(equippedGun.transform.GetChild(0).GetComponent<AudioSource>()));
+                StartCoroutine(Rack(heldGun.ItemObject.rackingSFX));
             }
         }
         heldGun.item.ammoInMag--;
@@ -52,15 +53,13 @@ public class GunManager : MonoBehaviour
 
     }
 
-    private IEnumerator Rack(AudioSource equippedGunRerackClip)
+    private IEnumerator Rack(AudioClip rackingClip)
     {
-        
         int RPM = Player.instance.GetHeldSlot().ItemObject.GetRPM(Player.instance.GetHeldSlot().item);
         float timeBetweenShotsInSeconds = 1f / (RPM / 60f);
         Debug.Log(timeBetweenShotsInSeconds);
-        yield return new WaitForSeconds(timeBetweenShotsInSeconds - equippedGunRerackClip.clip.length);
-        Debug.Log(equippedGunRerackClip.clip.name);
-        equippedGunRerackClip.PlayOneShot(equippedGunRerackClip.clip);
+        yield return new WaitForSeconds(timeBetweenShotsInSeconds - rackingClip.length);
+        GunShotSource.PlayOneShot(rackingClip);
     }
 
     public IEnumerator Reload(InventorySlot heldGun)

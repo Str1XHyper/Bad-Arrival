@@ -78,6 +78,11 @@ public class ItemObject : ScriptableObject
     public GameObject Model;
     public float HeadshotMultiplier;
 
+    public AudioClip gunshotSFX;
+    public AudioClip rackingSFX;
+    [Range(0,1f)]
+    public float volumeScale = 1;
+
     #endregion
 
     public Item CreateItem()
