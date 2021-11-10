@@ -41,9 +41,9 @@ public class Encounter : MonoBehaviour
         spawnpointToUseIndex = Random.Range(1, (spawnPoints.Count - 1));
         spawnpointToUse = spawnPoints[spawnpointToUseIndex];
         GameObject enemy = Instantiate(enemyTypes[Random.Range(0, (enemyTypes.Length - 1))], spawnPoints[spawnpointToUseIndex].transform.position, Quaternion.identity);
+        enemiesList.Add(enemy);
         spawnPoints.RemoveAt(spawnpointToUseIndex);
         spawnPoints.Insert(0, spawnpointToUse);
-        enemiesList.Add(enemy);
     }
 
     public void SetActive()

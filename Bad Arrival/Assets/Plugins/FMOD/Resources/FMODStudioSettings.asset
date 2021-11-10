@@ -344,8 +344,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../fmod/bad-arrival/bad-arrival.fspro
-  sourceBankPath: ../fmod/bad-arrival/Build
+  sourceProjectPath: ../../../../Users/luuk_/Documents/FMOD Studio/bad-arrival/bad-arrival.fspro
+  sourceBankPath: ../../../../Users/luuk_/Documents/FMOD Studio/bad-arrival/Build
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -740,7 +740,7 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 2
+      Value: 1
       HasValue: 1
     Logging:
       Value: 0

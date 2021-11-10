@@ -46,9 +46,9 @@ public class CapturePoint : MonoBehaviour
     {
         if (other.gameObject == Player.instance.gameObject)
         {
-            if(eventStarted != true)
+            if(timeLeftToCapInFrames > 0)
             {
-                if (startEvent != null)
+                if (startEvent != null && eventStarted != true)
                 {
                     startEvent.Invoke();
                     eventStarted = true;
