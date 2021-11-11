@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootpool:
   - item: {fileID: 11400000, guid: 8f44b350a21f88148a9d1d70d44bb0be, type: 2}
-    weight: 15
+    weight: 25
   - item: {fileID: 11400000, guid: 6a5e7315c4a371e4295e231660eb34b0, type: 2}
-    weight: 35
-  - item: {fileID: 11400000, guid: ccfa7f97fa0f6854780e3712be7f6bdb, type: 2}
-    weight: 50
+    weight: 75
